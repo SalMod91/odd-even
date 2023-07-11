@@ -16,7 +16,18 @@ let startButton = document.getElementById("start-button");
 startButton.addEventListener("click", startGame);
 
 let quitButton = document.getElementById("quit-button");
-quitButton.addEventListener("click", quitGame)
+quitButton.addEventListener("click", quitGame);
+
+let oddButton = document.getElementById("odd-button");
+oddButton.addEventListener("click", chooseOdd);
+
+let evenButton = document.getElementById("even-button");
+evenButton.addEventListener("click", chooseEven);
+
+let wagerButtons = document.getElementsByClassName("wager-button");
+    for (button of wagerButtons) {
+        button.addEventListener("click", chooseWager);
+    }
 
 /* Open and close rules section by toggling display:none to display:flex */
 
@@ -46,4 +57,16 @@ function quitGame(event) {
     gameSection.style.display = "none";
 
     menu.style.display = "flex"
+}
+
+function chooseEven () {
+
+}
+
+function chooseOdd () {
+
+}
+
+function chooseWager () {
+    
 }
