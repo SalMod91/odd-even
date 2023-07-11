@@ -19,6 +19,7 @@ body {
     padding: 5%;
     align-items: center;
     width: 100%;
+    border: 5px solid black;
 }
 
 #rules-section {
@@ -45,4 +46,24 @@ body {
     width: 200px;
     height: 50px;
     font-size: 150%;
+}
+
+#game-section {
+    display: none;
+    justify-content: space-between;
+    flex-direction: column;
+    min-height: 80vh;
+    padding: 5%;
+    align-items: center;
+    width: 100%;
+    border: 5px solid black;
+}
+
+#quit-button {
+    position: absolute;
+    right: 20%;
+    top: 10%;
+    width: 80px;
+    height: 40px;
+    font-size: 130%;
 }

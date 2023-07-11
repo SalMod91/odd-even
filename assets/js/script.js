@@ -1,4 +1,11 @@
+/* creating the sections that will be interchangable */
+
+const menu = document.getElementById("menu");
+const rulesSection = document.getElementById("rules-section");
+const gameSection = document.getElementById("game-section");
+
 /* Event listeners */
+
 let openRulesButton = document.getElementById("rules-open");
 openRulesButton.addEventListener("click", openRules);
 
@@ -6,21 +13,37 @@ let closeRulesButton = document.getElementById("rules-close");
 closeRulesButton.addEventListener("click", closeRules);
 
 let startButton = document.getElementById("start-button");
-startButton.addEventListener("click", startGame)
+startButton.addEventListener("click", startGame);
 
-/* Open and close rules section */
+let quitButton = document.getElementById("quit-button");
+quitButton.addEventListener("click", quitGame)
+
+/* Open and close rules section by toggling display:none to display:flex */
+
 function openRules(event) {
-    let rulesSection = document.getElementById("rules-section");
+
     rulesSection.style.display = "flex";
 }
 
 function closeRules(event) {
-    let rulesSection = document.getElementById("rules-section");
+
     rulesSection.style.display = "none";
 }
 
-/* clear screen */
+/* Start Button removes Menu and toggles Game screen */
 
 function startGame(event) {
 
+    menu.style.display = "none";
+
+    gameSection.style.display = "flex";
+}
+
+/* Quit button returns to the Menu */
+
+function quitGame(event) {
+
+    gameSection.style.display = "none";
+
+    menu.style.display = "flex"
 }
