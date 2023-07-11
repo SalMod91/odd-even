@@ -21,7 +21,17 @@ body {
     width: 100%;
 }
 
-#rules-button {
+#rules-section {
+    background: white;
+    padding: 20px;
+    align-items: center;
+    flex-direction: column;
+    display: none;
+    position: absolute;
+    border: 5px solid black;
+}
+
+#rules-close, #rules-open {
     width: 200px;
     height: 50px;
     font-size: 150%;
