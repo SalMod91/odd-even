@@ -3,6 +3,8 @@
 const menu = document.getElementById("menu");
 const rulesSection = document.getElementById("rules-section");
 const gameSection = document.getElementById("game-section");
+const oddEvenSection = document.getElementById("odd-even-container")
+const wagerSection = document.getElementById("wager-container")
 
 /* Event listeners */
 
