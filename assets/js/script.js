@@ -7,7 +7,8 @@ const oddEvenSection = document.getElementById("odd-even-container");
 const wagerSection = document.getElementById("wager-container");
 const playerMarbles = document.getElementById("player-marble");
 const computerMarbles = document.getElementById("computer-marble");
-const playerStatus = document.getElementById("player-status");
+
+let playerStatus = document.getElementById("player-status");
 
 let playerTurn = true;
 
@@ -58,14 +59,7 @@ function startGame(event) {
     playerMarbles.textContent = 10;
     computerMarbles.textContent = 10;
 
-    while (playerMarbles > 0 && playerMarbles <20) {
-        if (playerTurn) {
-
-            switchTurn();
-        } else {
-            switchTurn();
-        }
-    }
+    playGame();
 }
 
 /* Quit button returns to the Menu */
@@ -75,10 +69,6 @@ function quitGame(event) {
     gameSection.style.display = "none";
     menu.style.display = "flex";
 
-}
-
-function chooseWager (event) {
-    let selectedWager = parseInt(this.getAttribute("data-value"));
 }
 
 // Switch turn between true and false
@@ -92,10 +82,50 @@ function updateMarblesDisplay() {
     computerMarbles.textContent = computerMarbles;
 }
 
-function OEButtons () {
+function showOE() {
     oddEvenSection.style.display = "flex";
 }
 
-function wagerButtons () {
+function chooseOE() {
+
+}
+
+function hideOE() {
+    oddEvenSection.style.display = "none";
+}
+
+function showWager() {
     wagerSection.style.display = "flex";
+}
+
+function chooseWager (event) {
+    let selectedWager = parseInt(this.getAttribute("data-value"));
+}
+
+function hideWager() {
+    wagerSection.style.display = "none";
+}
+
+function playerGuesser() {
+    playerStatus.innerHTML = "<p>You are the <span class='guesser'>Guesser!</span>!</p>";
+}
+
+function playGame() {
+
+    if (playerTurn) {
+        playerGuesser();
+        showOE();
+        chooseOE();
+        hideOE();
+    } else {
+        playerHider();
+    }
+
+    if (parseInt(playerMarbles.textContent) > 0 && parseInt(playerMarbles.textContent) < 20) {
+        playGame();
+    } else if (parseInt(playerMarbles.textContent) == 20) {
+        victory();
+    } else if (parseInt(playerMarbles.textContent) == 0) {
+        defeat();
+    }
 }

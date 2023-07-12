@@ -135,3 +135,11 @@ body {
 .wager-button {
     margin: 5px;
 }
+
+.guesser {
+    color: #f44786;
+}
+
+.hider {
+    color: #249f9c;
+}
