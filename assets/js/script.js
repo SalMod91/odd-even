@@ -3,8 +3,13 @@
 const menu = document.getElementById("menu");
 const rulesSection = document.getElementById("rules-section");
 const gameSection = document.getElementById("game-section");
-const oddEvenSection = document.getElementById("odd-even-container")
-const wagerSection = document.getElementById("wager-container")
+const oddEvenSection = document.getElementById("odd-even-container");
+const wagerSection = document.getElementById("wager-container");
+const playerMarbles = document.getElementById("player-marble");
+const computerMarbles = document.getElementById("computer-marble");
+const playerStatus = document.getElementById("player-status");
+
+let playerTurn = true;
 
 /* Event listeners */
 
@@ -48,8 +53,19 @@ function closeRules(event) {
 function startGame(event) {
 
     menu.style.display = "none";
-
     gameSection.style.display = "flex";
+
+    playerMarbles.textContent = 10;
+    computerMarbles.textContent = 10;
+
+    while (playerMarbles > 0 && playerMarbles <20) {
+        if (playerTurn) {
+
+            switchTurn();
+        } else {
+            switchTurn();
+        }
+    }
 }
 
 /* Quit button returns to the Menu */
@@ -57,18 +73,29 @@ function startGame(event) {
 function quitGame(event) {
 
     gameSection.style.display = "none";
-
-    menu.style.display = "flex"
-}
-
-function chooseEven () {
+    menu.style.display = "flex";
 
 }
 
-function chooseOdd () {
-
+function chooseWager (event) {
+    let selectedWager = parseInt(this.getAttribute("data-value"));
 }
 
-function chooseWager () {
-    
+// Switch turn between true and false
+function switchTurn () {
+    playerTurn = !playerTurn;
+}
+
+// Updates marbles counter
+function updateMarblesDisplay() {
+    playerMarbles.textContent = playerMarbles;
+    computerMarbles.textContent = computerMarbles;
+}
+
+function OEButtons () {
+    oddEvenSection.style.display = "flex";
+}
+
+function wagerButtons () {
+    wagerSection.style.display = "flex";
 }

@@ -32,19 +32,21 @@
             <button id="start-button"><span style="color: #f44786">START </span><span style="color: #249f9c">GAME!</span></button>
         </div>
         <div id="game-section">
-            <span>
+            <span id="quit-button-container">
                 <button id="quit-button">Quit</button>
             </span>
             <div id="score-section">
                 <span>
-                    <img src="assets/images/marble-pouch.webp" alt="A pouch with marbles used to keep score">
+                    <img class="pouch" src="assets/images/marble-pouch.webp" alt="A pouch with marbles used to keep score">
                 </span>
+                <p id="player-marble">0</p>
+                <p id="computer-marble">0</p>
                 <span>
-                    <img src="assets/images/marble-pouch.webp" alt="A pouch with marbles used to keep score">
+                    <img class="pouch"src="assets/images/marble-pouch.webp" alt="A pouch with marbles used to keep score">
                 </span>
             </div>
             <div id="information-section">
-                <p>You are the guesser!</p>
+                <p id="player-status"></p>
                 <div id="odd-even-container">
                     <p>Choose Odd or Even:</p>
                     <span id="odd-even-button-container">
@@ -55,10 +57,10 @@
                 <div id="wager-container">
                     <p>How much do you wager?</p>
                     <span id="wager-button-container">
-                        <button class="wager-button">1</button>
-                        <button class="wager-button">2</button>
-                        <button class="wager-button">3</button>
-                        <button class="wager-button">4</button>
+                        <button class="wager-button" data-value="1">1</button>
+                        <button class="wager-button" data-value="2">2</button>
+                        <button class="wager-button" data-value="3">3</button>
+                        <button class="wager-button" data-value="4">4</button>
                     </span>
                 </div>
             </div>
