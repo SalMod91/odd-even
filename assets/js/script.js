@@ -95,7 +95,7 @@ function handleWager (wager) {
 
 function compareOE() {
 
-    let randomNumber = Math.floor(Math.random*4) + 1;
+    let randomNumber = Math.floor(Math.random() * 4) + 1;
     computerOE = randomNumber === 1 || randomNumber === 3 ? "odd" : "even";
 
     let playerWins = playerOE === computerOE;
