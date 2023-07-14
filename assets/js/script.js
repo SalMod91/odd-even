@@ -117,16 +117,42 @@ function compareOE() {
     playerMarblesCounter.textContent = playerMarbles;
     computerMarblesCounter.textContent = computerMarbles;
 
-    setTimeout(function() {
-        
-        switchTurn();
-        if (playerTurn) {
-          showOE();
-        } else {
-          showOE();
-        }
-      }, 3000);
+    if (playerMarbles === 20) {
+        victory();
+      } else if (playerMarbles === 0) {
+        defeat();
+      } else {
+        setTimeout(function() {
+
+            switchTurn();
+            if (playerTurn) {
+            showOE();
+            } else {
+            showOE();
+            }
+        }, 2000);
     }
+}
+
+// Function when the player wins
+
+function victory() {
+    playerStatus.textContent = "You have won the game!"
+
+    setTimeout(function() {
+        quitGame();
+    }, 2000);
+}
+
+// Function when the player loses
+
+function defeat() {
+    playerStatus.textContent = "You have been eliminated"
+
+    setTimeout(function() {
+        quitGame();
+    }, 2000)
+}
 
 // Functions to either show or hide OE and wager buttons
 
