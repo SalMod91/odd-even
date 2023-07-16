@@ -117,9 +117,9 @@ function compareOE() {
     playerMarblesCounter.textContent = playerMarbles;
     computerMarblesCounter.textContent = computerMarbles;
 
-    if (playerMarbles === 20) {
+    if (playerMarbles >= 20) {
         victory();
-      } else if (playerMarbles === 0) {
+      } else if (playerMarbles <= 0) {
         defeat();
       } else {
         setTimeout(function() {
@@ -197,5 +197,8 @@ function playgame() {
     if (playerTurn) {
         playerGuesser();
         showOE();
+    } else {
+        playerHider();
+        showHiderOE();
     }
 }
