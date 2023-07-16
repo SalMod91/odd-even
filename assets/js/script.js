@@ -4,6 +4,7 @@ const rulesSection = document.getElementById("rules-section");
 const gameSection = document.getElementById("game-section");
 const oddEvenSection = document.getElementById("odd-even-container");
 const wagerSection = document.getElementById("wager-container");
+const hiderSection = document.getElementById("hider-container")
 
 // Set variables to various buttons
 
@@ -24,7 +25,9 @@ let playerStatus = document.getElementById("player-status");
 // Game stats
 let playerTurn = true;
 let playerOE;
+let playerHideOE;
 let playerWager;
+let computerWager;
 let playerMarbles;
 let computerMarbles;
 
@@ -43,6 +46,16 @@ let wagerButtons = document.getElementsByClassName("wager-button");
         button.addEventListener("click", function() {
             wager = parseInt(this.value);
             handleWager(wager);
+        });
+    }
+
+// Event listener to choose how many marbles to hide
+
+    let hiderButtons = document.getElementsByClassName("hider-button");
+    for (button of hiderButtons) {
+        button.addEventListener("click", function() {
+            hide = parseInt(this.value);
+            handleHider(hide);
         });
     }
 
@@ -91,6 +104,12 @@ function handleWager (wager) {
     compareOE();
 }
 
+function handleHider (hide) {
+    playerHideOE = hide === 1 || hide === 3 ? "odd" : "even";
+    hideHider();
+    compareHider();
+}
+
 // Function to roll computer OE, compare with the player and repeat the game cycle
 
 function compareOE() {
@@ -98,19 +117,21 @@ function compareOE() {
     let randomNumber = Math.floor(Math.random() * 4) + 1;
     computerOE = randomNumber === 1 || randomNumber === 3 ? "odd" : "even";
 
-    let playerWins = playerOE === computerOE;
+    let playerWins = playerHideOE === computerOE;
 
     if (playerWins) {
 
         playerMarbles += playerWager;
         computerMarbles -= playerWager;
-        playerStatus.innerHTML = "<p>You <span class='hider'>Win!</span></p>";
+        playerStatus.innerHTML = `<p>Computer chose ${computerOE} and you guessed correctly.</p>
+        <p>You <span class='hider'>Win!</span></p>`;
 
     } else {
 
         playerMarbles -= playerWager;
         computerMarbles += playerWager;
-        playerStatus.innerHTML = "<p>You <span class='guesser'>Lost!</span></p>";
+        playerStatus.innerHTML = `<p>Computer chose ${computerOE} and you guessed wrong.</p>
+        <p>You <span class='guesser'>Lost!</span></p>`;
 
     }
 
@@ -126,11 +147,59 @@ function compareOE() {
 
             switchTurn();
             if (playerTurn) {
+            playerGuesser();
             showOE();
             } else {
-            showOE();
+            playerHider();
+            showHider();
             }
-        }, 2000);
+        }, 3000);
+    }
+}
+
+function compareHider() {
+    let randomNumber = Math.floor(Math.random() * 4) + 1;
+    computerOE = randomNumber === 1 || randomNumber === 3 ? "odd" : "even";
+    computerWager = randomNumber
+
+    let playerWins = playerHideOE != computerOE;
+
+    if (playerWins) {
+
+        playerMarbles += computerWager;
+        computerMarbles -= computerWager;
+        playerStatus.innerHTML = `<p>Computer chose ${computerOE} and wagered ${computerWager}.</p>
+        <p>You <span class='hider'>Win!</span></p>`;
+
+    } else {
+
+        playerMarbles -= computerWager;
+        computerMarbles += computerWager;
+        playerStatus.innerHTML = `<p>Computer chose ${computerOE} and wagered ${computerWager}.</p>
+        <p>You <span class='guesser'>Lost!</span></p>`;
+
+    }
+
+    playerMarblesCounter.textContent = playerMarbles;
+    computerMarblesCounter.textContent = computerMarbles;
+
+    if (playerMarbles >= 20) {
+        victory();
+      } else if (playerMarbles <= 0) {
+        defeat();
+      } else {
+        setTimeout(function() {
+
+            switchTurn();
+            if (playerTurn) {
+            playerGuesser();
+            showOE();
+            } else {
+            playerHider();
+            showHider();
+            }
+        }, 3000);
+
     }
 }
 
@@ -172,9 +241,21 @@ function hideWager() {
     wagerSection.style.display = "none";
 }
 
+function showHider() {
+    hiderSection.style.display = "flex"
+}
+
+function hideHider() {
+    hiderSection.style.display = "none"
+}
+
 // Function to tell the player what turn it is to guess or hide
 function playerGuesser() {
     playerStatus.innerHTML = "<p>You are the <span class='guesser'>Guesser!</span></p>";
+}
+
+function playerHider() {
+    playerStatus.innerHTML = "<p>You are the <span class='hider'>Hider!</span></p>";
 }
 
 /* Start Button removes Menu and toggles Game screen */
@@ -199,6 +280,6 @@ function playgame() {
         showOE();
     } else {
         playerHider();
-        showHiderOE();
+        showHider();
     }
 }

@@ -132,7 +132,24 @@ body {
     flex-direction: row;
     align-items: center;
 }
+
 .wager-button {
+    margin: 5px;
+}
+
+#hider-container {
+    display: none;
+    align-items: center;
+    flex-direction: column;
+}
+
+#hider-button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.hider-button {
     margin: 5px;
 }
 
