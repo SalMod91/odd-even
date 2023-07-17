@@ -4,7 +4,9 @@ const rulesSection = document.getElementById("rules-section");
 const gameSection = document.getElementById("game-section");
 const oddEvenSection = document.getElementById("odd-even-container");
 const wagerSection = document.getElementById("wager-container");
-const hiderSection = document.getElementById("hider-container")
+const hiderSection = document.getElementById("hider-container");
+const wagerButtonContainer = document.getElementById("wager-button-container");
+const hiderButtonContainer = document.getElementById("hider-button-container");
 
 // Set variables to various buttons
 
@@ -39,15 +41,6 @@ closeRulesButton.addEventListener("click", closeRules);
 startButton.addEventListener("click", startGame);
 
 quitButton.addEventListener("click", quitGame);
-
-// Event listener to give value of wager to a variable and call a function 
-let wagerButtons = document.getElementsByClassName("wager-button");
-    for (button of wagerButtons) {
-        button.addEventListener("click", function() {
-            wager = parseInt(this.value);
-            handleWager(wager);
-        });
-    }
 
 // Event listener to choose how many marbles to hide
 
@@ -98,8 +91,8 @@ function handleOE(oe) {
     showWager();
 }
 
-function handleWager (wager) {
-    playerWager = wager;
+function handleWager (selectedWager) {
+    playerWager = selectedWager;
     hideWager();
     compareOE();
 }
@@ -284,6 +277,24 @@ function hideOE() {
 }
 
 function showWager() {
+    wagerButtonContainer.innerHTML = ""; 
+
+    let maxWager = Math.min(playerMarbles, 4)
+
+    for (let wager = 1; wager <= maxWager; wager++) {
+        let wagerButton = document.createElement("button");
+        wagerButton.classList.add("wager-button");
+        wagerButton.value = wager;
+        wagerButton.textContent = wager;
+
+        wagerButton.addEventListener("click", function() {
+            let selectedWager = parseInt(this.value);
+            handleWager(selectedWager);
+        });
+
+        wagerButtonContainer.appendChild(wagerButton);
+}   
+
     wagerSection.style.display = "flex";
 }
 
