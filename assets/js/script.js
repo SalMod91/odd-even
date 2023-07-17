@@ -116,6 +116,7 @@ function compareOE() {
 
     let computerMarblesLeft = computerMarbles;
 
+    // checking how many marbles the computer has left
     switch (computerMarblesLeft) {
         case 1:
             computerMarblesLeft = 1;
@@ -133,6 +134,7 @@ function compareOE() {
             break;
     }
 
+    // This ensures the computer won't hide more marbles than he has left
     let randomNumber = Math.floor(Math.random() * computerMarblesLeft) + 1;
     computerOE = randomNumber === 1 || randomNumber === 3 ? "odd" : "even";
 
@@ -177,9 +179,38 @@ function compareOE() {
 }
 
 function compareHider() {
+
+    let playerMarblesLeft = playerMarbles;
+
+    // checking how many marbles the player has left in order to make a smarter decision for the next wager
+    switch (playerMarblesLeft) {
+        case 1:
+            playerMarblesLeft = 1;
+            break;
+
+        case 2:
+            playerMarblesLeft = 2;
+            break;
+
+        case 3: playerMarblesLeft = 3;
+            break;
+
+        default:
+            playerMarblesLeft = 4;
+            break;
+    }
+
+    // This prevents the computer from wagering more marbles than the player has left
+    let randomWager = Math.floor(Math.random() * playerMarblesLeft) + 1;
+
+    // If the player has only 1 marble left to hide the computer will always choose odd, resulting in a win
     let randomNumber = Math.floor(Math.random() * 4) + 1;
-    computerOE = randomNumber === 1 || randomNumber === 3 ? "odd" : "even";
-    computerWager = randomNumber
+
+    if (playerMarblesLeft > 1) {
+        computerOE = randomNumber === 1 || randomNumber === 3 ? "odd" : "even";
+    } else computerOE = "odd";
+
+    computerWager = randomWager;
 
     let playerWins = playerHideOE != computerOE;
 
