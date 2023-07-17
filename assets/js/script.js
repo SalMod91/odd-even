@@ -114,7 +114,24 @@ function handleHider (hide) {
 
 function compareOE() {
 
-    let randomNumber = Math.floor(Math.random() * 4) + 1;
+    switch (computerMarbles) {
+        case 1:
+            computerMarbles = 1;
+            break;
+
+        case 2:
+            computerMarbles = 2;
+            break;
+
+        case 3: computerMarbles = 3;
+            break;
+
+        default:
+            computerMarbles = 4;
+            break;
+    }
+
+    let randomNumber = Math.floor(Math.random() * computerMarbles) + 1;
     computerOE = randomNumber === 1 || randomNumber === 3 ? "odd" : "even";
 
     let playerWins = playerHideOE === computerOE;
