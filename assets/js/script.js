@@ -97,8 +97,8 @@ function handleWager (selectedWager) {
     compareOE();
 }
 
-function handleHider (hide) {
-    playerHideOE = hide === 1 || hide === 3 ? "odd" : "even";
+function handleHider (selectedHide) {
+    playerHideOE = selectedHide === 1 || selectedHide === 3 ? "odd" : "even";
     hideHider();
     compareHider();
 }
@@ -293,7 +293,7 @@ function showWager() {
         });
 
         wagerButtonContainer.appendChild(wagerButton);
-}   
+    }   
 
     wagerSection.style.display = "flex";
 }
@@ -303,6 +303,24 @@ function hideWager() {
 }
 
 function showHider() {
+    hiderButtonContainer.innerHTML = "";
+
+    let maxHide = Math.min(playerMarbles, 4)
+
+    for (let hide = 1; hide <= maxHide; hide++) {
+        let hideButton = document.createElement("button");
+        hideButton.classList.add("hider-button");
+        hideButton.textContent = hide;
+        hideButton.value = hide;
+
+        hideButton.addEventListener("click", function() {
+            let selectedHide = parseInt(this.value);
+            handleHider(selectedHide);
+        });
+
+        hiderButtonContainer.appendChild(hideButton);
+    }
+
     hiderSection.style.display = "flex"
 }
 
