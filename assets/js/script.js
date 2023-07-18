@@ -9,7 +9,6 @@ const wagerButtonContainer = document.getElementById("wager-button-container");
 const hiderButtonContainer = document.getElementById("hider-button-container");
 
 // Set variables to various buttons
-
 const evenButton = document.getElementById("even-button");
 const oddButton = document.getElementById("odd-button");
 const quitButton = document.getElementById("quit-button");
@@ -42,16 +41,6 @@ startButton.addEventListener("click", startGame);
 
 quitButton.addEventListener("click", quitGame);
 
-// Event listener to choose how many marbles to hide
-
-    let hiderButtons = document.getElementsByClassName("hider-button");
-    for (button of hiderButtons) {
-        button.addEventListener("click", function() {
-            hide = parseInt(this.value);
-            handleHider(hide);
-        });
-    }
-
 // Event listener for OE buttons to call a function
 oddButton.addEventListener("click", function() {
         handleOE("odd");
@@ -70,8 +59,7 @@ function closeRules(event) {
     rulesSection.style.display = "none";
 }
 
-/* Quit button returns to the Menu */
-
+// Quit button returns to the Menu 
 function quitGame(event) {
 
     gameSection.style.display = "none";
@@ -84,7 +72,7 @@ function switchTurn () {
     playerTurn = !playerTurn;
 }
 
-// Function to handle the player's choice on it's turn
+// Function to handle the player's choice when guessing
 function handleOE(oe) {
     playerOE = oe;
     hideOE();
@@ -97,13 +85,14 @@ function handleWager (selectedWager) {
     compareOE();
 }
 
+// Function to handle the player's choice when hiding
 function handleHider (selectedHide) {
     playerHideOE = selectedHide === 1 || selectedHide === 3 ? "odd" : "even";
     hideHider();
     compareHider();
 }
 
-// Function to roll computer OE, compare with the player and repeat the game cycle
+// Function to roll computer OE when the player is guessing, compare with the player, switch turn and repeat/end the game cycle
 
 function compareOE() {
 
@@ -131,6 +120,7 @@ function compareOE() {
     let randomNumber = Math.floor(Math.random() * computerMarblesLeft) + 1;
     computerOE = randomNumber === 1 || randomNumber === 3 ? "odd" : "even";
 
+    // Compare odd or even
     let playerWins = playerHideOE === computerOE;
 
     if (playerWins) {
@@ -149,9 +139,11 @@ function compareOE() {
 
     }
 
+    // Updates the displayed score
     playerMarblesCounter.textContent = playerMarbles;
     computerMarblesCounter.textContent = computerMarbles;
 
+    // Conditional statement in order to end the game when a certain criteria has been met
     if (playerMarbles >= 20) {
         victory();
       } else if (playerMarbles <= 0) {
@@ -171,6 +163,8 @@ function compareOE() {
     }
 }
 
+
+// Function to roll computer OE and wager when the player is hiding, compare with the player, switch turn and repeat/end the game cycle 
 function compareHider() {
 
     let playerMarblesLeft = playerMarbles;
@@ -205,6 +199,7 @@ function compareHider() {
 
     computerWager = randomWager;
 
+    // Compare odd or even
     let playerWins = playerHideOE != computerOE;
 
     if (playerWins) {
@@ -223,9 +218,11 @@ function compareHider() {
 
     }
 
+    // Updates the displayed score
     playerMarblesCounter.textContent = playerMarbles;
     computerMarblesCounter.textContent = computerMarbles;
 
+    // Conditional statement in order to end the game when a certain criteria has been met
     if (playerMarbles >= 20) {
         victory();
       } else if (playerMarbles <= 0) {
@@ -267,7 +264,6 @@ function defeat() {
 }
 
 // Functions to either show or hide OE and wager buttons
-
 function showOE() {
     oddEvenSection.style.display = "flex";
 }
@@ -276,6 +272,7 @@ function hideOE() {
     oddEvenSection.style.display = "none";
 }
 
+// Creates buttons in order to choose how many marbles to wager based on how many marbles are left for a maximum of 4
 function showWager() {
     wagerButtonContainer.innerHTML = ""; 
 
@@ -298,10 +295,12 @@ function showWager() {
     wagerSection.style.display = "flex";
 }
 
+// Hides the wager buttons
 function hideWager() {
     wagerSection.style.display = "none";
 }
 
+// Creates buttons in order to choose how many marbles to hide baed on how many marbles are left for a maximum of 4
 function showHider() {
     hiderButtonContainer.innerHTML = "";
 
@@ -324,11 +323,12 @@ function showHider() {
     hiderSection.style.display = "flex"
 }
 
+// Hides the hider button
 function hideHider() {
     hiderSection.style.display = "none"
 }
 
-// Function to tell the player what turn it is to guess or hide
+// Functions to inform the player about its role
 function playerGuesser() {
     playerStatus.innerHTML = "<p>You are the <span class='guesser'>Guesser!</span></p>";
 }
@@ -337,8 +337,7 @@ function playerHider() {
     playerStatus.innerHTML = "<p>You are the <span class='hider'>Hider!</span></p>";
 }
 
-/* Start Button removes Menu and toggles Game screen */
-
+/* Start Button removes Menu, toggles the Game screen and starts the playgame() function */
 function startGame(event) {
 
     menu.style.display = "none";
@@ -353,6 +352,7 @@ function startGame(event) {
     playgame();
 }
 
+// depending on the player's turn it renders the buttons visible necessary to progress the game
 function playgame() {
     if (playerTurn) {
         playerGuesser();
