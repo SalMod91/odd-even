@@ -42,13 +42,13 @@ startButton.addEventListener("click", startGame);
 quitButton.addEventListener("click", quitGame);
 
 // Event listener for OE buttons to call a function
-oddButton.addEventListener("click", function() {
-        handleOE("odd");
-    });
+oddButton.addEventListener("click", function () {
+    handleOE("odd");
+});
 
-evenButton.addEventListener("click", function() {
-        handleOE("even");
-    });
+evenButton.addEventListener("click", function () {
+    handleOE("even");
+});
 
 /* Open and close rules section by toggling display:none to display:flex */
 function openRules(event) {
@@ -68,7 +68,7 @@ function quitGame(event) {
 }
 
 // Switch turn between true and false
-function switchTurn () {
+function switchTurn() {
     playerTurn = !playerTurn;
 }
 
@@ -79,14 +79,14 @@ function handleOE(oe) {
     showWager();
 }
 
-function handleWager (selectedWager) {
+function handleWager(selectedWager) {
     playerWager = selectedWager;
     hideWager();
     compareOE();
 }
 
 // Function to handle the player's choice when hiding
-function handleHider (selectedHide) {
+function handleHider(selectedHide) {
     playerHideOE = selectedHide === 1 || selectedHide === 3 ? "odd" : "even";
     hideHider();
     compareHider();
@@ -146,18 +146,18 @@ function compareOE() {
     // Conditional statement in order to end the game when a certain criteria has been met
     if (playerMarbles >= 20) {
         victory();
-      } else if (playerMarbles <= 0) {
+    } else if (playerMarbles <= 0) {
         defeat();
-      } else {
-        setTimeout(function() {
+    } else {
+        setTimeout(function () {
 
             switchTurn();
             if (playerTurn) {
-            playerGuesser();
-            showOE();
+                playerGuesser();
+                showOE();
             } else {
-            playerHider();
-            showHider();
+                playerHider();
+                showHider();
             }
         }, 3000);
     }
@@ -225,18 +225,18 @@ function compareHider() {
     // Conditional statement in order to end the game when a certain criteria has been met
     if (playerMarbles >= 20) {
         victory();
-      } else if (playerMarbles <= 0) {
+    } else if (playerMarbles <= 0) {
         defeat();
-      } else {
-        setTimeout(function() {
+    } else {
+        setTimeout(function () {
 
             switchTurn();
             if (playerTurn) {
-            playerGuesser();
-            showOE();
+                playerGuesser();
+                showOE();
             } else {
-            playerHider();
-            showHider();
+                playerHider();
+                showHider();
             }
         }, 3000);
 
@@ -248,7 +248,7 @@ function compareHider() {
 function victory() {
     playerStatus.textContent = "You have won the game!"
 
-    setTimeout(function() {
+    setTimeout(function () {
         quitGame();
     }, 2000);
 }
@@ -258,7 +258,7 @@ function victory() {
 function defeat() {
     playerStatus.textContent = "You have been eliminated"
 
-    setTimeout(function() {
+    setTimeout(function () {
         quitGame();
     }, 2000)
 }
@@ -274,7 +274,7 @@ function hideOE() {
 
 // Creates buttons in order to choose how many marbles to wager based on how many marbles are left for a maximum of 4
 function showWager() {
-    wagerButtonContainer.innerHTML = ""; 
+    wagerButtonContainer.innerHTML = "";
 
     let maxWager = Math.min(playerMarbles, 4)
 
@@ -284,13 +284,13 @@ function showWager() {
         wagerButton.value = wager;
         wagerButton.textContent = wager;
 
-        wagerButton.addEventListener("click", function() {
+        wagerButton.addEventListener("click", function () {
             let selectedWager = parseInt(this.value);
             handleWager(selectedWager);
         });
 
         wagerButtonContainer.appendChild(wagerButton);
-    }   
+    }
 
     wagerSection.style.display = "flex";
 }
@@ -312,7 +312,7 @@ function showHider() {
         hideButton.textContent = hide;
         hideButton.value = hide;
 
-        hideButton.addEventListener("click", function() {
+        hideButton.addEventListener("click", function () {
             let selectedHide = parseInt(this.value);
             handleHider(selectedHide);
         });
@@ -345,10 +345,10 @@ function startGame(event) {
 
     playerMarbles = 10;
     computerMarbles = 10;
-    
+
     playerMarblesCounter.textContent = playerMarbles;
     computerMarblesCounter.textContent = computerMarbles;
-    
+
     playgame();
 }
 
