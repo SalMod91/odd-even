@@ -24,7 +24,7 @@ let computerMarblesCounter = document.getElementById("computer-marble");
 let playerStatus = document.getElementById("player-status");
 
 // Game stats
-let playerTurn = true;
+let playerTurn;
 let playerOE;
 let playerHideOE;
 let playerWager;
@@ -92,31 +92,23 @@ function handleHider(selectedHide) {
     compareHider();
 }
 
+// checking how many marbles the computer has left in order to make a smarter decision for the next computer wager
+function calculateComputerMarblesLeft() {
+    return Math.min(computerMarbles, 4)
+}
+
+// checking how many marbles the player has left in order to make a smarter decision for the next computer wager
+function calculatePlayerMarblesLeft() {
+    return Math.min(playerMarbles, 4)
+}
+
 // Function to roll computer OE when the player is guessing, compare with the player, switch turn and repeat/end the game cycle
 
 function compareOE() {
 
-    let computerMarblesLeft = computerMarbles;
-
-    // checking how many marbles the computer has left
-    switch (computerMarblesLeft) {
-        case 1:
-            computerMarblesLeft = 1;
-            break;
-
-        case 2:
-            computerMarblesLeft = 2;
-            break;
-
-        case 3: computerMarblesLeft = 3;
-            break;
-
-        default:
-            computerMarblesLeft = 4;
-            break;
-    }
-
     // This ensures the computer won't hide more marbles than he has left
+    let computerMarblesLeft = calculateComputerMarblesLeft();
+
     let randomNumber = Math.floor(Math.random() * computerMarblesLeft) + 1;
     computerOE = randomNumber === 1 || randomNumber === 3 ? "odd" : "even";
 
@@ -145,9 +137,9 @@ function compareOE() {
 
     // Conditional statement in order to end the game when a certain criteria has been met
     if (playerMarbles >= 20) {
-        victory();
+        setTimeout(victory, 3000);
     } else if (playerMarbles <= 0) {
-        defeat();
+        setTimeout(defeat, 3000);
     } else {
         setTimeout(function () {
 
@@ -164,40 +156,29 @@ function compareOE() {
 }
 
 
-// Function to roll computer OE and wager when the player is hiding, compare with the player, switch turn and repeat/end the game cycle 
+/**
+ * compares the computer's OE value with the player's hidden OE, updates the game state and switches turn
+ */
 function compareHider() {
 
-    let playerMarblesLeft = playerMarbles;
-
-    // checking how many marbles the player has left in order to make a smarter decision for the next wager
-    switch (playerMarblesLeft) {
-        case 1:
-            playerMarblesLeft = 1;
-            break;
-
-        case 2:
-            playerMarblesLeft = 2;
-            break;
-
-        case 3: playerMarblesLeft = 3;
-            break;
-
-        default:
-            playerMarblesLeft = 4;
-            break;
-    }
-
     // This prevents the computer from wagering more marbles than the player has left
+    let playerMarblesLeft = calculatePlayerMarblesLeft();
+
     let randomWager = Math.floor(Math.random() * playerMarblesLeft) + 1;
 
-    // If the player has only 1 marble left to hide the computer will always choose odd, resulting in a win
+    // This prevents the computer from wagering more marbles than he has left
+    let maxWager = Math.min(playerMarblesLeft, calculateComputerMarblesLeft())
+
+    // Decides the wager amount to be used, this way the computer won't wager more than the player has left or more than the computer itself has left
+    computerWager = Math.min(randomWager, maxWager);
+
+    // This part of the code rolls a random number btw 1 and 4 to decide the computer OE outcome
     let randomNumber = Math.floor(Math.random() * 4) + 1;
 
+    // If the player has only 1 marble left to hide the computer will always choose odd, resulting in a win
     if (playerMarblesLeft > 1) {
         computerOE = randomNumber === 1 || randomNumber === 3 ? "odd" : "even";
     } else computerOE = "odd";
-
-    computerWager = randomWager;
 
     // Compare odd or even
     let playerWins = playerHideOE != computerOE;
@@ -224,9 +205,9 @@ function compareHider() {
 
     // Conditional statement in order to end the game when a certain criteria has been met
     if (playerMarbles >= 20) {
-        victory();
+        setTimeout(victory, 3000);
     } else if (playerMarbles <= 0) {
-        defeat();
+        setTimeout(defeat, 3000);
     } else {
         setTimeout(function () {
 
@@ -348,6 +329,8 @@ function startGame(event) {
 
     playerMarblesCounter.textContent = playerMarbles;
     computerMarblesCounter.textContent = computerMarbles;
+
+    playerTurn = true;
 
     playgame();
 }
