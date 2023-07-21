@@ -2,9 +2,11 @@
 const menu = document.getElementById("menu");
 const rulesSection = document.getElementById("rules-section");
 const gameSection = document.getElementById("game-section");
+const imageSection = document.getElementById("image-section");
 const oddEvenSection = document.getElementById("odd-even-container");
 const wagerSection = document.getElementById("wager-container");
 const hiderSection = document.getElementById("hider-container");
+const imageContainer = document.getElementById("image-container")
 const wagerButtonContainer = document.getElementById("wager-button-container");
 const hiderButtonContainer = document.getElementById("hider-button-container");
 
@@ -102,7 +104,7 @@ function hideWager() {
 function showHider() {
 
     hiderSection.style.display = "flex";
-    
+
     hiderButtonContainer.innerHTML = "";
 
     let maxHide = Math.min(playerMarbles, 4)
