@@ -127,8 +127,23 @@ function closeRules(event) {
     rulesSection.style.display = "none";
 }
 
+// This function will add the image given as an argument
+function displayImage(imageList) {
+
+    imageContainer.innerHTML = "";
+
+    let imageDisplayed = document.createElement("img");
+    imageDisplayed.src = imageList.source;
+    imageDisplayed.alt = imageList.add;
+    imageDisplayed.classList.add(imageList.class);
+
+    imageContainer.appendChild(imageDisplayed);
+}
+
 // Functions to either show or hide OE and wager buttons
 function showOE() {
+    displayImage(imageList[2]);
+
     oddEvenSection.style.display = "flex";
 }
 
@@ -138,6 +153,7 @@ function hideOE() {
 
 // Creates buttons in order to choose how many marbles to wager based on how many marbles are left for a maximum of 4
 function showWager() {
+
     wagerButtonContainer.innerHTML = "";
 
     let maxWager = Math.min(playerMarbles, 4)

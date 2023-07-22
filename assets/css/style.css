@@ -68,6 +68,18 @@ body {
     color: #f44786;
 }
 
+.left {
+    width: 200px;
+    position: absolute;
+    left: 23%;
+}
+
+.right {
+    width: 200px;
+    position: absolute;
+    right: 23%;
+}
+
 #score-section {
     display: flex;
     position: relative;
