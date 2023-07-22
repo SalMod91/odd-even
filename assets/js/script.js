@@ -130,8 +130,6 @@ function closeRules(event) {
 // This function will add the image given as an argument
 function displayImage(imageList) {
 
-    imageContainer.innerHTML = "";
-
     let imageDisplayed = document.createElement("img");
     imageDisplayed.src = imageList.source;
     imageDisplayed.alt = imageList.add;
@@ -142,7 +140,10 @@ function displayImage(imageList) {
 
 // Functions to either show or hide OE and wager buttons
 function showOE() {
+    imageContainer.innerHTML = "";
+
     displayImage(imageList[2]);
+    displayImage(imageList[1]);
 
     oddEvenSection.style.display = "flex";
 }
@@ -182,6 +183,10 @@ function hideWager() {
 
 // Creates buttons in order to choose how many marbles to hide baed on how many marbles are left for a maximum of 4
 function showHider() {
+    imageContainer.innerHTML = "";
+
+    displayImage(imageList[0]);
+    displayImage(imageList[3]);
 
     hiderSection.style.display = "flex";
 

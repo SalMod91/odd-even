@@ -78,6 +78,7 @@ body {
     width: 200px;
     position: absolute;
     right: 23%;
+    transform: scaleX(-1);
 }
 
 #score-section {
