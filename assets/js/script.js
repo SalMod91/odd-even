@@ -34,6 +34,70 @@ let computerWager;
 let playerMarbles;
 let computerMarbles;
 
+// Images in an array of objects
+const imageList = [
+    {
+        source: "assets/images/fist.png",
+        alt: "Image depicting a closed fist",
+        class: "left"
+    },
+    {
+        source: "assets/images/fist.png",
+        alt: "Image depicting a closed fist",
+        class: "right"
+    },
+    {
+        source: "assets/images/pointing.png",
+        alt: "Image depicting a hand pointing to the right",
+        class: "left"
+    },
+    {
+        source: "assets/images/pointing.png",
+        alt: "Image depicting a hand pointing to the left",
+        class: "right"
+    },
+    {
+        source: "assets/images/show-1.png",
+        alt: "Image depicting an open hand with one marble",
+        class: "left"
+    },
+    {
+        source: "assets/images/show-1.png",
+        alt: "Image depicting an open hand with one marble",
+        class: "right"
+    },
+    {
+        source: "assets/images/show-2.png",
+        alt: "Image depicting an open hand with two marbles",
+        class: "left"
+    },
+    {
+        source: "assets/images/show-2.png",
+        alt: "Image depicting an open hand with two marbles",
+        class: "right"
+    },
+    {
+        source: "assets/images/show-3.png",
+        alt: "Image depicting an open hand with three marbles",
+        class: "left"
+    },
+    {
+        source: "assets/images/show-3.png",
+        alt: "Image depicting an open hand with three marbles",
+        class: "right"
+    },
+    {
+        source: "assets/images/show-4.png",
+        alt: "Image depicting an open hand with four marbles",
+        class: "left"
+    },
+    {
+        source: "assets/images/show-4.png",
+        alt: "Image depicting an open hand with four marbles",
+        class: "right"
+    }
+];
+
 // Event listeners
 openRulesButton.addEventListener("click", openRules);
 
