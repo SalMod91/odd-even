@@ -139,7 +139,7 @@ function displayImage(imageList) {
 }
 
 // This function will display a specific image depending on the value of the wager button pressed
-function displayWagerImage(value) {
+function displayPlayerImage(value) {
     let index;
 
     switch (value) {
@@ -231,7 +231,7 @@ function showWager() {
         wagerButton.addEventListener("click", function () {
             let selectedWager = parseInt(this.value);
             handleWager(selectedWager);
-            displayWagerImage(selectedWager);
+            displayPlayerImage(selectedWager);
         });
 
         wagerButtonContainer.appendChild(wagerButton);
@@ -245,7 +245,7 @@ function hideWager() {
     wagerSection.style.display = "none";
 }
 
-// Creates buttons in order to choose how many marbles to hide baed on how many marbles are left for a maximum of 4
+// Creates buttons in order to choose how many marbles to hide based on how many marbles are left for a maximum of 4
 function showHider() {
     clearImage();
 
@@ -267,6 +267,7 @@ function showHider() {
         hideButton.addEventListener("click", function () {
             let selectedHide = parseInt(this.value);
             handleHider(selectedHide);
+            displayPlayerImage(selectedHide);
         });
 
         hiderButtonContainer.appendChild(hideButton);
