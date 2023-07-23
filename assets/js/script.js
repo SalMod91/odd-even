@@ -33,6 +33,7 @@ let playerWager;
 let computerWager;
 let playerMarbles;
 let computerMarbles;
+let endTurnTimeOut;
 
 // Images in an array of objects
 const imageList = [
@@ -384,7 +385,7 @@ function compareOE() {
     } else if (playerMarbles <= 0) {
         setTimeout(defeat, 3000);
     } else {
-        setTimeout(function () {
+        endTurnTimeOut = setTimeout(function () {
 
             switchTurn();
             if (playerTurn) {
@@ -454,7 +455,7 @@ function compareHider() {
     } else if (playerMarbles <= 0) {
         setTimeout(defeat, 3000);
     } else {
-        setTimeout(function () {
+        endTurnTimeOut = setTimeout(function () {
 
             switchTurn();
             if (playerTurn) {
@@ -526,6 +527,8 @@ function playgame() {
 
 // Quit button returns to the Menu and resets the game screen
 function quitGame(event) {
+
+    clearTimeout(endTurnTimeOut)
 
     gameSection.style.display = "none";
     hideOE();
