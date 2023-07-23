@@ -138,7 +138,7 @@ function displayImage(imageList) {
     imageContainer.appendChild(imageDisplayed);
 }
 
-// This function will add a specific image to display depending on the value of the wager button pressed
+// This function will display a specific image depending on the value of the wager button pressed
 function displayWagerImage(value) {
     let index;
 
@@ -161,6 +161,35 @@ function displayWagerImage(value) {
 
         default:
             index = 2;
+            break;
+    }
+
+    displayImage(imageList[index]);
+}
+
+// This function will display a specific image depending on the numbers of marbles the computer decided to hide
+function displayComputerHiderImage(randomNumber) {
+    let index;
+
+    switch (randomNumber) {
+        case 1:
+            index = 5;
+            break;
+
+        case 2:
+            index = 7;
+            break;
+        
+        case 3:
+            index = 9;
+            break;
+        
+        case 4:
+            index = 11;
+            break;
+
+        default:
+            index = 3;
             break;
     }
 
@@ -292,6 +321,8 @@ function compareOE() {
 
     let randomNumber = Math.floor(Math.random() * computerMarblesLeft) + 1;
     computerOE = randomNumber === 1 || randomNumber === 3 ? "odd" : "even";
+
+    displayComputerHiderImage(randomNumber);
 
     // Compare odd or even
     let playerWins = playerHideOE === computerOE;
