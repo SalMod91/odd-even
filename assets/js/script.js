@@ -167,7 +167,7 @@ function displayPlayerImage(value) {
     displayImage(imageList[index]);
 }
 
-// This function will display a specific image depending on the numbers of marbles the computer decided to hide
+// This function will display a specific image depending on the numbers of marbles the computer decides to hide
 function displayComputerHiderImage(randomNumber) {
     let index;
 
@@ -194,6 +194,36 @@ function displayComputerHiderImage(randomNumber) {
     }
 
     displayImage(imageList[index]);
+}
+
+// This function will display a specific image depending on the numbers of marbles the computer decides to wager
+function displayComputerWagerImage(computerWager) {
+    let index;
+
+    switch (computerWager) {
+        case 1:
+            index = 5;
+            break;
+
+        case 2:
+            index = 7;
+            break;
+        
+        case 3:
+            index = 9;
+            break;
+        
+        case 4:
+            index = 11;
+            break;
+
+        default:
+            index = 3;
+            break;
+    }
+
+    displayImage(imageList[index]);
+
 }
 
 // removes the images displayed
@@ -326,7 +356,7 @@ function compareOE() {
     displayComputerHiderImage(randomNumber);
 
     // Compare odd or even
-    let playerWins = playerHideOE === computerOE;
+    let playerWins = playerOE === computerOE;
 
     if (playerWins) {
 
@@ -384,6 +414,8 @@ function compareHider() {
 
     // Decides the wager amount to be used, this way the computer won't wager more than the player has left or more than the computer itself has left
     computerWager = Math.min(randomWager, maxWager);
+
+    displayComputerWagerImage(computerWager);
 
     // This part of the code rolls a random number btw 1 and 4 to decide the computer OE outcome
     let randomNumber = Math.floor(Math.random() * 4) + 1;
