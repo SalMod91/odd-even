@@ -127,20 +127,54 @@ function closeRules(event) {
     rulesSection.style.display = "none";
 }
 
-// This function will add the image given as an argument
+// This function will display the image given as an argument
 function displayImage(imageList) {
 
     let imageDisplayed = document.createElement("img");
     imageDisplayed.src = imageList.source;
-    imageDisplayed.alt = imageList.add;
+    imageDisplayed.alt = imageList.alt;
     imageDisplayed.classList.add(imageList.class);
 
     imageContainer.appendChild(imageDisplayed);
 }
 
+// This function will add a specific image to display depending on the value of the wager button pressed
+function displayWagerImage(value) {
+    let index;
+
+    switch (value) {
+        case 1:
+            index = 4;
+            break;
+
+        case 2:
+            index = 6;
+            break;
+        
+        case 3:
+            index = 8;
+            break;
+        
+        case 4:
+            index = 10;
+            break;
+
+        default:
+            index = 2;
+            break;
+    }
+
+    displayImage(imageList[index]);
+}
+
+// removes the images displayed
+function clearImage () {
+    imageContainer.innerHTML = "";
+}
+
 // Functions to either show or hide OE and wager buttons
 function showOE() {
-    imageContainer.innerHTML = "";
+    clearImage();
 
     displayImage(imageList[2]);
     displayImage(imageList[1]);
@@ -168,6 +202,7 @@ function showWager() {
         wagerButton.addEventListener("click", function () {
             let selectedWager = parseInt(this.value);
             handleWager(selectedWager);
+            displayWagerImage(selectedWager);
         });
 
         wagerButtonContainer.appendChild(wagerButton);
@@ -183,7 +218,7 @@ function hideWager() {
 
 // Creates buttons in order to choose how many marbles to hide baed on how many marbles are left for a maximum of 4
 function showHider() {
-    imageContainer.innerHTML = "";
+    clearImage();
 
     displayImage(imageList[0]);
     displayImage(imageList[3]);
