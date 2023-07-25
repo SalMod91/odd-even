@@ -3,10 +3,10 @@ const menu = document.getElementById("menu");
 const rulesSection = document.getElementById("rules-section");
 const gameSection = document.getElementById("game-section");
 const imageSection = document.getElementById("image-section");
+const bubbleImageSection = document.getElementById("bubble-image-section");
 const oddEvenSection = document.getElementById("odd-even-container");
 const wagerSection = document.getElementById("wager-container");
 const hiderSection = document.getElementById("hider-container");
-const imageContainer = document.getElementById("image-container")
 const wagerButtonContainer = document.getElementById("wager-button-container");
 const hiderButtonContainer = document.getElementById("hider-button-container");
 
@@ -99,6 +99,25 @@ const imageList = [
     }
 ];
 
+const bubbleList = [
+    {
+        source: "assets/images/bubble-player-odd.png",
+        alt: "A speech bubble declaring that the player chose odd"
+    },
+    {
+        source: "assets/images/bubble-player-even.png",
+        alt: "A speech bubble declaring that the player chose even"
+    },
+    {
+        source: "assets/images/bubble-computer-odd.png",
+        alt: "A speech bubble declaring that the computer chose odd"
+    },
+    {
+        source: "assets/images/bubble-computer-even.png",
+        alt: "A speech bubble declaring that the computer chose even"
+    }
+];
+
 // Event listeners
 openRulesButton.addEventListener("click", openRules);
 
@@ -128,6 +147,16 @@ function closeRules(event) {
     rulesSection.style.display = "none";
 }
 
+// This function will display the image
+function displayBubbleImage(bubbleList) {
+
+    let bubbleDisplayed = document.createElement("img");
+    bubbleDisplayed.src = bubbleList.source;
+    bubbleDisplayed.alt = bubbleList.alt;
+
+    bubbleImageSection.appendChild(bubbleDisplayed);
+}
+
 // This function will display the image given as an argument
 function displayImage(imageList) {
 
@@ -136,7 +165,7 @@ function displayImage(imageList) {
     imageDisplayed.alt = imageList.alt;
     imageDisplayed.classList.add(imageList.class);
 
-    imageContainer.appendChild(imageDisplayed);
+    imageSection.appendChild(imageDisplayed);
 }
 
 // This function will display a specific image depending on the value of the wager button pressed
@@ -229,7 +258,11 @@ function displayComputerWagerImage(computerWager) {
 
 // removes the images displayed
 function clearImage () {
-    imageContainer.innerHTML = "";
+    imageSection.innerHTML = "";
+}
+
+function clearBubble() {
+    bubbleImageSection.innerHTML = "";
 }
 
 // Functions to either show or hide OE and wager buttons
@@ -354,6 +387,11 @@ function compareOE() {
     let randomNumber = Math.floor(Math.random() * computerMarblesLeft) + 1;
     computerOE = randomNumber === 1 || randomNumber === 3 ? "odd" : "even";
 
+    let bubblePlayer = playerOE === "odd" ? 0 : 1;
+    displayBubbleImage(bubbleList[bubblePlayer]);
+    bubbleImageSection.style.justifyContent = "flex-start";
+
+
     displayComputerHiderImage(randomNumber);
 
     // Compare odd or even
@@ -389,9 +427,11 @@ function compareOE() {
 
             switchTurn();
             if (playerTurn) {
+                clearBubble();
                 playerGuesser();
                 showOE();
             } else {
+                clearBubble();
                 playerHider();
                 showHider();
             }
@@ -416,8 +456,6 @@ function compareHider() {
     // Decides the wager amount to be used, this way the computer won't wager more than the player has left or more than the computer itself has left
     computerWager = Math.min(randomWager, maxWager);
 
-    displayComputerWagerImage(computerWager);
-
     // This part of the code rolls a random number btw 1 and 4 to decide the computer OE outcome
     let randomNumber = Math.floor(Math.random() * 4) + 1;
 
@@ -425,6 +463,12 @@ function compareHider() {
     if (playerMarblesLeft > 1) {
         computerOE = randomNumber === 1 || randomNumber === 3 ? "odd" : "even";
     } else computerOE = "odd";
+
+    let bubbleComputer = computerOE === "odd" ? 2 : 3;
+    displayBubbleImage(bubbleList[bubbleComputer]);
+    bubbleImageSection.style.justifyContent = "flex-end";
+
+    displayComputerWagerImage(computerWager);
 
     // Compare odd or even
     let playerWins = playerHideOE != computerOE;
@@ -459,9 +503,11 @@ function compareHider() {
 
             switchTurn();
             if (playerTurn) {
+                clearBubble();
                 playerGuesser();
                 showOE();
             } else {
+                clearBubble();
                 playerHider();
                 showHider();
             }
@@ -531,6 +577,8 @@ function quitGame(event) {
     clearTimeout(endTurnTimeOut)
 
     gameSection.style.display = "none";
+    clearImage();
+    clearBubble();
     hideOE();
     hideWager();
     hideHider();
