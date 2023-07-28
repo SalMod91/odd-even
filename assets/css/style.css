@@ -100,14 +100,14 @@ body {
 .left {
     width: 350px;
     position: absolute;
-    left: 0%;
+    left: -21px;
 }
 
 .right {
     width: 350px;
     transform: scaleX(-1);
     position: absolute;
-    right: 0;
+    right: -21px;
 }
 
 #score-section {

@@ -296,7 +296,8 @@ function showWager() {
         wagerButton.addEventListener("click", function () {
             let selectedWager = parseInt(this.value);
             handleWager(selectedWager);
-            displayPlayerImage(selectedWager);
+            clearImage();
+            displayPlayerImage(playerWager);
         });
 
         wagerButtonContainer.appendChild(wagerButton);
@@ -391,7 +392,6 @@ function compareOE() {
     let bubblePlayer = playerOE === "odd" ? 0 : 1;
     displayBubbleImage(bubbleList[bubblePlayer]);
     bubbleImageSection.style.justifyContent = "flex-start";
-
 
     displayComputerHiderImage(randomNumber);
 
