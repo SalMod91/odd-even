@@ -101,19 +101,19 @@ const imageList = [
 
 const bubbleList = [
     {
-        source: "assets/images/bubble-player-odd.png",
+        source: "assets/images/bubble-player-odd.webp",
         alt: "A speech bubble declaring that the player chose odd"
     },
     {
-        source: "assets/images/bubble-player-even.png",
+        source: "assets/images/bubble-player-even.webp",
         alt: "A speech bubble declaring that the player chose even"
     },
     {
-        source: "assets/images/bubble-computer-odd.png",
+        source: "assets/images/bubble-computer-odd.webp",
         alt: "A speech bubble declaring that the computer chose odd"
     },
     {
-        source: "assets/images/bubble-computer-even.png",
+        source: "assets/images/bubble-computer-even.webp",
         alt: "A speech bubble declaring that the computer chose even"
     }
 ];
