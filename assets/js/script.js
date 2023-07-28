@@ -153,6 +153,7 @@ function displayBubbleImage(bubbleList) {
     let bubbleDisplayed = document.createElement("img");
     bubbleDisplayed.src = bubbleList.source;
     bubbleDisplayed.alt = bubbleList.alt;
+    bubbleDisplayed.classList.add("bubble");
 
     bubbleImageSection.appendChild(bubbleDisplayed);
 }
