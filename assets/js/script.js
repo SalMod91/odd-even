@@ -296,8 +296,6 @@ function showWager() {
         wagerButton.addEventListener("click", function () {
             let selectedWager = parseInt(this.value);
             handleWager(selectedWager);
-            clearImage();
-            displayPlayerImage(playerWager);
         });
 
         wagerButtonContainer.appendChild(wagerButton);
@@ -333,7 +331,6 @@ function showHider() {
         hideButton.addEventListener("click", function () {
             let selectedHide = parseInt(this.value);
             handleHider(selectedHide);
-            displayPlayerImage(selectedHide);
         });
 
         hiderButtonContainer.appendChild(hideButton);
@@ -367,6 +364,8 @@ function handleWager(selectedWager) {
 function handleHider(selectedHide) {
     playerHideOE = selectedHide === 1 || selectedHide === 3 ? "odd" : "even";
     hideHider();
+    clearImage();
+    displayPlayerImage(selectedHide)
     compareHider();
 }
 
@@ -393,6 +392,8 @@ function compareOE() {
     displayBubbleImage(bubbleList[bubblePlayer]);
     bubbleImageSection.style.justifyContent = "flex-start";
 
+    clearImage();
+    displayPlayerImage(playerWager);
     displayComputerHiderImage(randomNumber);
 
     // Compare odd or even
