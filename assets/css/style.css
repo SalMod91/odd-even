@@ -3,6 +3,17 @@
     font-family: squidgame;
     src: url("../font/game-of-squids.ttf")
 }
+
+@font-face {
+    font-family: azonix;
+    src: url("../font/azonix.otf")
+}
+
+@font-face {
+    font-family: "the shape of things";
+    src: url("../font/the-shape-of-things.otf")
+}
+
 /* Temporary Background simulating sand */
 body {
     background: url(../images/background.jpg);
@@ -39,17 +50,23 @@ body {
     display: none;
     position: absolute;
     border: 5px solid black;
+    z-index: 2;
 }
 
 /* Button for rules and start game */
 #rules-close, #rules-open, #start-button {
-    width: 200px;
-    height: 50px;
-    font-size: 150%;
+    width: 260px;
+    height: 60px;
+    font-size: 200%;
+    font-family: azonix;
+    border: 3px solid black;
 }
 
 #game-title {
-    font-size:300%;
+    font-size: 500%;
+    font-family: "the shape of things";
+    position: relative;
+    left: 25px;
 }
 
 #game-section {
@@ -73,6 +90,7 @@ body {
     height: 40px;
     font-size: 130%;
     color: #f44786;
+    border: 3px solid black;
 }
 
 #bubble-image-section {
