@@ -28,6 +28,7 @@ let playerStatus = document.getElementById("player-status");
 // Game stats
 let playerTurn;
 let playerOE;
+let computerOE;
 let playerHideOE;
 let playerWager;
 let computerWager;
@@ -285,7 +286,7 @@ function showWager() {
 
     wagerButtonContainer.innerHTML = "";
 
-    let maxWager = Math.min(playerMarbles, 4)
+    let maxWager = Math.min(playerMarbles, 4);
 
     for (let wager = 1; wager <= maxWager; wager++) {
         let wagerButton = document.createElement("button");
@@ -320,7 +321,7 @@ function showHider() {
 
     hiderButtonContainer.innerHTML = "";
 
-    let maxHide = Math.min(playerMarbles, 4)
+    let maxHide = Math.min(playerMarbles, 4);
 
     for (let hide = 1; hide <= maxHide; hide++) {
         let hideButton = document.createElement("button");
@@ -365,18 +366,18 @@ function handleHider(selectedHide) {
     playerHideOE = selectedHide === 1 || selectedHide === 3 ? "odd" : "even";
     hideHider();
     clearImage();
-    displayPlayerImage(selectedHide)
+    displayPlayerImage(selectedHide);
     compareHider();
 }
 
 // Checking how many marbles the computer has left in order to make a smarter decision for the next computer wager
 function calculateComputerMarblesLeft() {
-    return Math.min(computerMarbles, 4)
+    return Math.min(computerMarbles, 4);
 }
 
 // Checking how many marbles the player has left in order to make a smarter decision for the next computer wager
 function calculatePlayerMarblesLeft() {
-    return Math.min(playerMarbles, 4)
+    return Math.min(playerMarbles, 4);
 }
 
 // Function to roll computer OE when the player is guessing, compare with the player, switch turn and repeat/end the game cycle
@@ -453,7 +454,7 @@ function compareHider() {
     let randomWager = Math.floor(Math.random() * playerMarblesLeft) + 1;
 
     // This prevents the computer from wagering more marbles than he has left
-    let maxWager = Math.min(playerMarblesLeft, calculateComputerMarblesLeft())
+    let maxWager = Math.min(playerMarblesLeft, calculateComputerMarblesLeft());
 
     // Decides the wager amount to be used, this way the computer won't wager more than the player has left or more than the computer itself has left
     computerWager = Math.min(randomWager, maxWager);
@@ -520,7 +521,7 @@ function compareHider() {
 
 // Function in order to end the game if the player wins
 function victory() {
-    playerStatus.textContent = "You have won the game!"
+    playerStatus.textContent = "You have won the game!";
 
     setTimeout(function () {
         quitGame();
@@ -529,11 +530,11 @@ function victory() {
 
 // Function in order to end the game if the player loses
 function defeat() {
-    playerStatus.textContent = "You have been eliminated"
+    playerStatus.textContent = "You have been eliminated";
 
     setTimeout(function () {
         quitGame();
-    }, 2000)
+    }, 2000);
 }
 
 // Functions to inform the player about its role
@@ -576,7 +577,7 @@ function playgame() {
 // Quit button returns to the Menu and resets the game screen
 function quitGame(event) {
 
-    clearTimeout(endTurnTimeOut)
+    clearTimeout(endTurnTimeOut);
 
     gameSection.style.display = "none";
     clearImage();
