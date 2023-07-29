@@ -86,7 +86,8 @@ body {
     left: 10px;
 }
 
-#role-button {
+#role-guesser-button {
+    display: none;
     width: 120px;
     height: 60px;
     font-size: 200%;
@@ -94,6 +95,55 @@ body {
     border: 3px solid black;
     text-transform: uppercase;
     font-weight: 800;
+}
+
+#role-guesser-section {
+    background: white;
+    padding: 20px;
+    align-items: center;
+    flex-direction: column;
+    display: none;
+    position: absolute;
+    border: 5px solid black;
+    z-index: 2;
+}
+
+#role-guesser-close {
+    width: 260px;
+    height: 60px;
+    font-size: 200%;
+    font-family: azonix;
+    border: 3px solid black;
+}
+
+#role-hider-button {
+    display: none;
+    width: 120px;
+    height: 60px;
+    font-size: 200%;
+    color: #f44786;
+    border: 3px solid black;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+#role-hider-section {
+    background: white;
+    padding: 20px;
+    align-items: center;
+    flex-direction: column;
+    display: none;
+    position: absolute;
+    border: 5px solid black;
+    z-index: 2;
+}
+
+#role-hider-close {
+    width: 260px;
+    height: 60px;
+    font-size: 200%;
+    font-family: azonix;
+    border: 3px solid black;
 }
 
 #quit-button-container {

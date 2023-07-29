@@ -34,7 +34,43 @@
         </div>
         <div id="game-section">
             <span id="quit-button-container"><button id="quit-button">Quit</button></span>
-            <span id="role-button-container"><button id="role-button">Role</button></span>
+            <span id="role-button-container"><button id="role-guesser-button">Guesser!</button><button id="role-hider-button">Hider!</button></span>
+            <div id="role-guesser-section">
+                <h2>You are the Guesser!</h2>
+                <p>Your role this turn is the guesser.</p>
+                <p>This is how the Guesser's turn works:</p>
+                <ul>
+                    <li>You declare if you think that the total marbles the computer is hiding is odd or even.</li>
+                    <li>You declare how many marbles you want to wager up to a maximum of 4 marbles.</li>
+                    <li>After you declared your decisions the computer has to show his hand.</li>
+                    <li>If you guessed odd or even correctly you win the amount you wagered and take it from your opponent's marbles.</li>
+                    <li>If you guessed odd or even incorrectly you give the amount of marbles wagered to your opponent.</li>
+                    <li>Afterwards the roles switch.</li>
+                    <li>The game continues until you have lost or won all 20 total marbles.</li>
+                </ul>
+                <p>By pressing the QUIT button you close the game and reset the score.</p>
+                <p>By pressing the CLOSE button you close this rules window.</p>
+                <button id="role-guesser-close">CLOSE</button>
+            </div>
+
+            <div id="role-hider-section">
+                <h2>You are the Guesser!</h2>
+                <p>Your role this turn is the guesser.</p>
+                <p>This is how the Guesser's turn works:</p>
+                <ul>
+                    <li>You declare if you think that the total marbles the computer is hiding is odd or even.</li>
+                    <li>You declare how many marbles you want to wager up to a maximum of 4 marbles.</li>
+                    <li>After you declared your decisions the computer has to show his hand.</li>
+                    <li>If you guessed odd or even correctly you win the amount you wagered and take it from your opponent's marbles.</li>
+                    <li>If you guessed odd or even incorrectly you give the amount of marbles wagered to your opponent.</li>
+                    <li>Afterwards the roles switch.</li>
+                    <li>The game continues until you have lost or won all 20 total marbles.</li>
+                </ul>
+                <p>By pressing the QUIT button you close the game and reset the score.</p>
+                <p>By pressing the CLOSE button you close this rules window.</p>
+                <button id="role-hider-close">CLOSE</button>
+            </div>
+
             <div id="bubble-image-section"></div>
             <div id="image-section">
             </div>

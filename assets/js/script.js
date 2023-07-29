@@ -2,6 +2,9 @@
 const menu = document.getElementById("menu");
 const rulesSection = document.getElementById("rules-section");
 const gameSection = document.getElementById("game-section");
+const roleButtonSection = document.getElementById("role-button-container")
+const roleGuesserSection = document.getElementById("role-guesser-section");
+const roleHiderSection = document.getElementById("role-hider-section");
 const imageSection = document.getElementById("image-section");
 const bubbleImageSection = document.getElementById("bubble-image-section");
 const oddEvenSection = document.getElementById("odd-even-container");
@@ -17,6 +20,10 @@ const quitButton = document.getElementById("quit-button");
 const startButton = document.getElementById("start-button");
 const closeRulesButton = document.getElementById("rules-close");
 const openRulesButton = document.getElementById("rules-open");
+const roleGuesserButton = document.getElementById("role-guesser-button");
+const roleHiderButton = document.getElementById("role-hider-button");
+const closeGuesserButton = document.getElementById("role-guesser-close");
+const closeHiderButton = document.getElementById("role-hider-close");
 
 // Score
 let playerMarblesCounter = document.getElementById("player-marble");
@@ -128,6 +135,14 @@ startButton.addEventListener("click", startGame);
 
 quitButton.addEventListener("click", quitGame);
 
+roleGuesserButton.addEventListener("click", openGuesser);
+
+roleHiderButton.addEventListener("click", openHider);
+
+closeGuesserButton.addEventListener("click", closeGuesser);
+
+closeHiderButton.addEventListener("click", closeHider);
+
 // Event listener for OE buttons to call a function
 oddButton.addEventListener("click", function () {
     handleOE("odd");
@@ -146,6 +161,38 @@ function openRules(event) {
 
 function closeRules(event) {
     rulesSection.style.display = "none";
+}
+
+function showGuesserButton() {
+    roleGuesserButton.style.display = "block";
+}
+
+function hideGuesserButton() {
+    roleGuesserButton.style.display = "none";
+}
+
+function showHiderButton() {
+    roleHiderButton.style.display = "block";
+}
+
+function hideHiderButton() {
+    roleHiderButton.style.display = "none";
+}
+
+function openGuesser() {
+    roleGuesserSection.style.display = "flex";
+}
+
+function closeGuesser() {
+    roleGuesserSection.style.display = "none";
+}
+
+function openHider() {
+    roleHiderSection.style.display = "flex";
+}
+
+function closeHider() {
+    roleHiderSection.style.display = "none";
 }
 
 // This function will display the image
@@ -383,6 +430,9 @@ function calculatePlayerMarblesLeft() {
 // Function to roll computer OE when the player is guessing, compare with the player, switch turn and repeat/end the game cycle
 function compareOE() {
 
+    hideGuesserButton();
+    closeGuesser();
+
     // This ensures the computer won't hide more marbles than he has left
     let computerMarblesLeft = calculateComputerMarblesLeft();
 
@@ -432,10 +482,12 @@ function compareOE() {
             if (playerTurn) {
                 clearBubble();
                 playerGuesser();
+                showGuesserButton();
                 showOE();
             } else {
                 clearBubble();
                 playerHider();
+                showHiderButton();
                 showHider();
             }
         }, 3000);
@@ -447,6 +499,9 @@ function compareOE() {
  * compares the computer's OE value with the player's hidden OE, updates the game state and switches turn
  */
 function compareHider() {
+
+    hideHiderButton();
+    closeHider();
 
     // This prevents the computer from wagering more marbles than the player has left
     let playerMarblesLeft = calculatePlayerMarblesLeft();
@@ -508,10 +563,12 @@ function compareHider() {
             if (playerTurn) {
                 clearBubble();
                 playerGuesser();
+                showGuesserButton();
                 showOE();
             } else {
                 clearBubble();
                 playerHider();
+                showHiderButton();
                 showHider();
             }
         }, 3000);
@@ -567,9 +624,11 @@ function startGame(event) {
 function playgame() {
     if (playerTurn) {
         playerGuesser();
+        showGuesserButton();
         showOE();
     } else {
         playerHider();
+        showHiderButton();
         showHider();
     }
 }
@@ -584,6 +643,10 @@ function quitGame(event) {
     clearBubble();
     hideOE();
     hideWager();
+    hideGuesserButton();
+    hideHiderButton();
+    closeGuesser();
+    closeHider();
     hideHider();
     menu.style.display = "flex";
 
