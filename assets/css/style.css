@@ -89,7 +89,7 @@ body {
     align-items: center;
     width: 100%;
     border: 5px solid black;
-    background-color: rgba(236, 204, 162, .85);
+    background-color: rgba(236, 204, 162, .9);
     position: relative;
 }
 
@@ -107,6 +107,18 @@ body {
     border: 3px solid black;
     text-transform: uppercase;
     font-weight: 800;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 0px 7px 0px 0px rgba(100, 100, 111, 0.6);
+}
+
+#role-guesser-button:hover {
+    background-color: #f2f2f2;
+}
+
+#role-guesser-button:active {
+    transform: translateY(5px);
+    box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
 }
 
 #role-guesser-section {
@@ -126,6 +138,18 @@ body {
     font-size: 200%;
     font-family: azonix;
     border: 3px solid black;
+    background-color: white;
+    box-shadow: 0px 7px 0px 0px rgba(100, 100, 111, 0.6);
+    cursor: pointer;
+}
+
+#role-guesser-close:hover {
+    background-color: #f2f2f2;
+}
+
+#role-guesser-close:active {
+    transform: translateY(5px);
+    box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
 }
 
 #role-hider-button {
@@ -137,6 +161,18 @@ body {
     border: 3px solid black;
     text-transform: uppercase;
     font-weight: 800;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 0px 7px 0px 0px rgba(100, 100, 111, 0.6);
+}
+
+#role-hider-button:hover {
+    background-color: #f2f2f2;
+}
+
+#role-hider-button:active {
+    transform: translateY(5px);
+    box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
 }
 
 #role-hider-section {
@@ -156,6 +192,18 @@ body {
     font-size: 200%;
     font-family: azonix;
     border: 3px solid black;
+    background-color: white;
+    box-shadow: 0px 7px 0px 0px rgba(100, 100, 111, 0.6);
+    cursor: pointer;
+}
+
+#role-hider-close:hover {
+    background-color: #f2f2f2;
+}
+
+#role-hider-close:active {
+    transform: translateY(5px);
+    box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
 }
 
 #quit-button-container {
@@ -171,6 +219,18 @@ body {
     border: 3px solid black;
     text-transform: uppercase;
     font-weight: 800;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 0px 7px 0px 0px rgba(100, 100, 111, 0.6);
+}
+
+#quit-button:hover {
+    background-color: #f2f2f2;
+}
+
+#quit-button:active {
+    transform: translateY(5px);
+    box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
 }
 
 #bubble-image-section {
@@ -246,10 +306,20 @@ body {
     background-color: rgba(246,215,176, .85);
 }
 
+#player-status {
+    position: relative;
+    bottom: 20px;
+    font-size: 150%;
+    text-align: center;
+}
+
 #odd-even-container {
     display: none;
     align-items: center;
     flex-direction: column;
+    font-size: 150%;
+    position: relative;
+    bottom: 60px;
 }
 
 #odd-even-button-container {
@@ -262,10 +332,57 @@ body {
     margin: 5px;
 }
 
+#odd-button {
+    width: 90px;
+    height: 50px;
+    font-size: 100%;
+    color: #f44786;
+    border: 2px solid black;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 0px 7px 0px 0px rgba(100, 100, 111, 0.6);
+}
+
+#odd-button:hover {
+    background-color: #f2f2f2;
+}
+
+#odd-button:active {
+    transform: translateY(5px);
+    box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
+}
+
+#even-button {
+    width: 90px;
+    height: 50px;
+    font-size: 100%;
+    color: #037a76;
+    border: 2px solid black;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 0px 7px 0px 0px rgba(100, 100, 111, 0.6);
+}
+
+#even-button:hover {
+    background-color: #f2f2f2;
+}
+
+#even-button:active {
+    transform: translateY(5px);
+    box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
+}
+
 #wager-container {
     display: none;
     align-items: center;
     flex-direction: column;
+    font-size: 150%;
+    position: relative;
+    bottom: 60px;
 }
 
 #wager-button-container {
@@ -276,12 +393,34 @@ body {
 
 .wager-button {
     margin: 5px;
+    width: 90px;
+    height: 50px;
+    font-size: 100%;
+    color: #f44786;
+    border: 2px solid black;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 0px 7px 0px 0px rgba(100, 100, 111, 0.6);
+}
+
+.wager-button:hover {
+    background-color: #f2f2f2;
+}
+
+.wager-button:active {
+    transform: translateY(5px);
+    box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
 }
 
 #hider-container {
     display: none;
     align-items: center;
     flex-direction: column;
+    font-size: 150%;
+    position: relative;
+    bottom: 60px;
 }
 
 #hider-button-container {
@@ -292,6 +431,25 @@ body {
 
 .hider-button {
     margin: 5px;
+    width: 90px;
+    height: 50px;
+    font-size: 100%;
+    color: #249f9c;
+    border: 2px solid black;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 0px 7px 0px 0px rgba(100, 100, 111, 0.6);
+}
+
+.hider-button:hover {
+    background-color: #f2f2f2;
+}
+
+.hider-button:active {
+    transform: translateY(5px);
+    box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
 }
 
 .guesser {
@@ -300,4 +458,14 @@ body {
 
 .hider {
     color: #249f9c;
+}
+
+.odd {
+    color: #f44786;
+    text-transform: capitalize;
+}
+
+.even {
+    color: #249f9c;
+    text-transform: capitalize;
 }

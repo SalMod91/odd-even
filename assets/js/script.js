@@ -324,6 +324,13 @@ function showOE() {
     oddEvenSection.style.display = "flex";
 }
 
+// Function to handle the player's OE when guessing
+function handleOE(oe) {
+    playerOE = oe;
+    hideOE();
+    showWager();
+}
+
 function hideOE() {
     oddEvenSection.style.display = "none";
 }
@@ -350,6 +357,13 @@ function showWager() {
     }
 
     wagerSection.style.display = "flex";
+}
+
+// function to handle the player's wager when guessing
+function handleWager(selectedWager) {
+    playerWager = selectedWager;
+    hideWager();
+    compareOE();
 }
 
 // Hides the created wager buttons
@@ -392,20 +406,6 @@ function hideHider() {
 // Switch turn between true and false
 function switchTurn() {
     playerTurn = !playerTurn;
-}
-
-// Function to handle the player's OE when guessing
-function handleOE(oe) {
-    playerOE = oe;
-    hideOE();
-    showWager();
-}
-
-// function to handle the player's wager when guessing
-function handleWager(selectedWager) {
-    playerWager = selectedWager;
-    hideWager();
-    compareOE();
 }
 
 // Function to handle the player's choice when hiding
@@ -454,15 +454,15 @@ function compareOE() {
 
         playerMarbles += playerWager;
         computerMarbles -= playerWager;
-        playerStatus.innerHTML = `<p>Computer chose ${computerOE} and you guessed correctly.</p>
-        <p>You <span class='hider'>Win!</span></p>`;
+        playerStatus.innerHTML = `<p>Computer chose <span class="${computerOE}">${computerOE}</span> and you guessed correctly.</p>
+        <p>You <span class='hider'>Win</span> this round.</p>`;
 
     } else {
 
         playerMarbles -= playerWager;
         computerMarbles += playerWager;
-        playerStatus.innerHTML = `<p>Computer chose ${computerOE} and you guessed wrong.</p>
-        <p>You <span class='guesser'>Lost!</span></p>`;
+        playerStatus.innerHTML = `<p>Computer chose <span class="${computerOE}">${computerOE}</span> and you guessed wrong.</p>
+        <p>You <span class='guesser'>Lost</span> this round.</p>`;
 
     }
 
@@ -470,28 +470,7 @@ function compareOE() {
     playerMarblesCounter.textContent = playerMarbles;
     computerMarblesCounter.textContent = computerMarbles;
 
-    // Conditional statement in order to end the game when a certain criteria has been met
-    if (playerMarbles >= 20) {
-        setTimeout(victory, 3000);
-    } else if (playerMarbles <= 0) {
-        setTimeout(defeat, 3000);
-    } else {
-        endTurnTimeOut = setTimeout(function () {
-
-            switchTurn();
-            if (playerTurn) {
-                clearBubble();
-                playerGuesser();
-                showGuesserButton();
-                showOE();
-            } else {
-                clearBubble();
-                playerHider();
-                showHiderButton();
-                showHider();
-            }
-        }, 3000);
-    }
+    turnEnd();
 }
 
 
@@ -535,15 +514,15 @@ function compareHider() {
 
         playerMarbles += computerWager;
         computerMarbles -= computerWager;
-        playerStatus.innerHTML = `<p>Computer chose ${computerOE} and wagered ${computerWager}.</p>
-        <p>You <span class='hider'>Win!</span></p>`;
+        playerStatus.innerHTML = `<p>Computer chose <span class="${computerOE}">${computerOE}</span> and wagered ${computerWager}.</p>
+        <p>You <span class='hider'>Win</span> this round.</p>`;
 
     } else {
 
         playerMarbles -= computerWager;
         computerMarbles += computerWager;
-        playerStatus.innerHTML = `<p>Computer chose ${computerOE} and wagered ${computerWager}.</p>
-        <p>You <span class='guesser'>Lost!</span></p>`;
+        playerStatus.innerHTML = `<p>Computer chose <span class="${computerOE}">${computerOE}</span> and wagered ${computerWager}.</p>
+        <p>You <span class='guesser'>Lost</span> this round.</p>`;
 
     }
 
@@ -551,7 +530,11 @@ function compareHider() {
     playerMarblesCounter.textContent = playerMarbles;
     computerMarblesCounter.textContent = computerMarbles;
 
-    // Conditional statement in order to end the game when a certain criteria has been met
+    turnEnd();
+}
+
+// Conditional statement in order to end the game when a certain criteria has been met, if the game didn't end it switches the player turn
+function turnEnd() {
     if (playerMarbles >= 20) {
         setTimeout(victory, 3000);
     } else if (playerMarbles <= 0) {
@@ -572,7 +555,6 @@ function compareHider() {
                 showHider();
             }
         }, 3000);
-
     }
 }
 
