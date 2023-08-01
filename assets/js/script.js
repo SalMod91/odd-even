@@ -1,4 +1,4 @@
-/* creating the sections that will be interchangable */
+// creating the sections that will be interchangable 
 const menu = document.getElementById("menu");
 const rulesSection = document.getElementById("rules-section");
 const gameSection = document.getElementById("game-section");
@@ -43,7 +43,7 @@ let playerMarbles;
 let computerMarbles;
 let endTurnTimeOut;
 
-// Images in an array of objects
+// Hand images depicting the player and computer status and showing the amount of marbles hidden/wagered
 const imageList = [
     {
         source: "assets/images/fist.png",
@@ -107,6 +107,7 @@ const imageList = [
     }
 ];
 
+// Bubble speech images depicting the choice of odd or even of the player or computer
 const bubbleList = [
     {
         source: "assets/images/bubble-player-odd.webp",
@@ -143,7 +144,7 @@ closeGuesserButton.addEventListener("click", closeGuesser);
 
 closeHiderButton.addEventListener("click", closeHider);
 
-// Event listener for OE buttons to call a function
+// Event listener for OE buttons to call the handleOE function
 oddButton.addEventListener("click", function () {
     handleOE("odd");
 });
@@ -152,53 +153,86 @@ evenButton.addEventListener("click", function () {
     handleOE("even");
 });
 
-// List of functions necessary for the game flow in order of appearance
+// These functions are assigned to click event listeners of rules and roles buttons
 
-// These functions are assigned to click event listeners, when the button is clicked they open and close rules/role sections by toggling display:none to display:flex and viceversa
+/**
+ * Changes the visibility of the rules section to "flex" rendering the rules visible and effectively opening the rules window 
+ */
 function openRules(event) {
     rulesSection.style.display = "flex";
 }
 
+/**
+ * Changes the visibility of the rules section to "none" rendering the rules invisible and effectively closing the rules window 
+ */
 function closeRules(event) {
     rulesSection.style.display = "none";
 }
 
+/**
+ * Changes the visibility of the guesser role section to "flex" rendering the rules visible and effectively opening the rules of the guesser window 
+ */
 function openGuesser(event) {
     roleGuesserSection.style.display = "flex";
 }
 
+/**
+ * * Changes the visibility of the guesser role section to "none" rendering the rules invisible and effectively closing the rules of the guesser window 
+ */
 function closeGuesser(event) {
     roleGuesserSection.style.display = "none";
 }
 
+/**
+ * Changes the visibility of the hider role section to "flex" rendering the rules visible and effectively opening the rules of the hider window 
+ */
 function openHider(event) {
     roleHiderSection.style.display = "flex";
 }
 
+/**
+ * Changes the visibility of the hider role section to "none" rendering the rules invisible and effectively closing the rules of the hider window
+ */
 function closeHider(event) {
     roleHiderSection.style.display = "none";
 }
 
-// these functions show the role buttons that help the player understand their role this turn, when the game progresses they hide and leave space to the next role button
+// The following functions are used to show and hide role buttons depending on the player's role during its turn
+
+/**
+ * Makes the button for the guesser rules visible and interactable by switching its display to "block"
+ */
 function showGuesserButton() {
     roleGuesserButton.style.display = "block";
 }
 
+/**
+ * Hides the button responsible for opening the guesser rules by switching its display to "none"
+ */
 function hideGuesserButton() {
     roleGuesserButton.style.display = "none";
 }
 
+/**
+ * Makes the button for opening the hider rules visible and interactable by switching its display to "block"
+ */
 function showHiderButton() {
     roleHiderButton.style.display = "block";
 }
 
+/**
+ * Hides the button responsible for opening the hider rules by switching its display to "none"
+ */
 function hideHiderButton() {
     roleHiderButton.style.display = "none";
 }
 
 // The following functions decide wich image to display, when to display them and when to remove them
 
-// This function will display the image chosen from the array of objects bubbleList using the index as an argument
+/**
+ * This function will display the image chosen from the array of objects bubbleList using the index as an argument
+ * @param {Array} bubbleList 
+ */
 function displayBubbleImage(bubbleList) {
 
     let bubbleDisplayed = document.createElement("img");
@@ -209,7 +243,10 @@ function displayBubbleImage(bubbleList) {
     bubbleImageSection.appendChild(bubbleDisplayed);
 }
 
-// This function will display the image chosen from the array of objects imageList using the index as an argument
+/**
+ * This function will display the image chosen from the array of objects imageList using the index as an argument
+ * @param {Array} imageList 
+ */
 function displayImage(imageList) {
 
     let imageDisplayed = document.createElement("img");
@@ -220,7 +257,10 @@ function displayImage(imageList) {
     imageSection.appendChild(imageDisplayed);
 }
 
-// This function will display a specific image depending on the value of the wager button pressed
+/**
+ * This function will display a specific image depending on the value of the wager button pressed
+ * @param {number} value the value of a wager chosen by the player ranging from 1 to 4
+ */
 function displayPlayerImage(value) {
     let index;
 
@@ -249,7 +289,10 @@ function displayPlayerImage(value) {
     displayImage(imageList[index]);
 }
 
-// This function will display a specific image depending on the numbers of marbles the computer decides to hide
+/**
+ * This function will display a specific image depending on the numbers of marbles the computer decides to hide
+ * @param {number} randomNumber a randomNumber ranging from 1 to 4 used to determine the computer's choice of odd or even
+ */
 function displayComputerHiderImage(randomNumber) {
     let index;
 
@@ -278,7 +321,10 @@ function displayComputerHiderImage(randomNumber) {
     displayImage(imageList[index]);
 }
 
-// This function will display a specific image depending on the numbers of marbles the computer decides to wager
+/**
+ * This function will display a specific image depending on the numbers of marbles the computer decides to wager
+ * @param {number} computerWager a random number ranging from 1 to 4
+ */
 function displayComputerWagerImage(computerWager) {
     let index;
 
@@ -308,20 +354,26 @@ function displayComputerWagerImage(computerWager) {
 
 }
 
-// removes the hand images displayed
+/**
+ * Clears the screen from the displayed hand images
+ */
 function clearImage () {
     imageSection.innerHTML = "";
 }
 
-// removes the speech bubble displayed
+/**
+ * Clears the screen from the displayed bubble speech
+ */
 function clearBubble() {
     bubbleImageSection.innerHTML = "";
 }
 
-// The following functions are responsible for the game flow, they will be listed in order of appearance
+// List of functions necessary for the game flow in order of appearance
 
 /**
- * Function to render the OE buttons visible, clear the old hand images and assign new hand images during the player's guesser turn
+ * Function to render the OE buttons visible,
+ * clears the screen of the displayed hand images,
+ * displays images according to the player being the guesser and the computer being the hider
  */
 function showOE() {
     clearImage();
@@ -333,7 +385,9 @@ function showOE() {
 }
 
 /**
- * 
+ * Gives a value to playerOE of either "odd" or "even",
+ * hides the OE buttons,
+ * renders the wager buttons visible
  * @param {string} oe passed through the string "odd" or "even" 
  */
 function handleOE(oe) {
@@ -342,11 +396,20 @@ function handleOE(oe) {
     showWager();
 }
 
+/**
+ * Hides the OE buttons by changing the display of the odd or even section to "none"
+ */
 function hideOE() {
     oddEvenSection.style.display = "none";
 }
 
-// Creates buttons in order to choose how many marbles to wager based on how many marbles are left for a maximum of 4
+/**
+ * Removes all buttons of the wager container,
+ * creates new wager buttons by choosing between the minimum number of the marbles available to the player or 4,
+ * gives an event listener to the wager buttons with "click" and handleWager() as an argument,
+ * appends the buttons as children of the div with an id="wager-button-container",
+ * renders the buttons visible by changing the display of the wager section to "flex"
+ */
 function showWager() {
 
     wagerButtonContainer.innerHTML = "";
@@ -370,7 +433,12 @@ function showWager() {
     wagerSection.style.display = "flex";
 }
 
-// function to handle the player's wager when guessing
+/**
+ * Assigns the value of selectedWager to the playerWager variable,
+ * hides the wager section by changing its display to "none",
+ * runs the compareOE() function.
+ * @param {number} selectedWager value of the wager button chosen by the player
+ */
 function handleWager(selectedWager) {
     playerWager = selectedWager;
     hideWager();
