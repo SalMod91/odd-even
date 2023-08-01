@@ -152,9 +152,9 @@ evenButton.addEventListener("click", function () {
     handleOE("even");
 });
 
-// List of functions necessary for the game flow
+// List of functions necessary for the game flow in order of appearance
 
-// Open and close rules section by toggling display:none to display:flex 
+// These functions are assigned to click event listeners, when the button is clicked they open and close rules/role sections by toggling display:none to display:flex and viceversa
 function openRules(event) {
     rulesSection.style.display = "flex";
 }
@@ -163,6 +163,23 @@ function closeRules(event) {
     rulesSection.style.display = "none";
 }
 
+function openGuesser(event) {
+    roleGuesserSection.style.display = "flex";
+}
+
+function closeGuesser(event) {
+    roleGuesserSection.style.display = "none";
+}
+
+function openHider(event) {
+    roleHiderSection.style.display = "flex";
+}
+
+function closeHider(event) {
+    roleHiderSection.style.display = "none";
+}
+
+// these functions show the role buttons that help the player understand their role this turn, when the game progresses they hide and leave space to the next role button
 function showGuesserButton() {
     roleGuesserButton.style.display = "block";
 }
@@ -179,23 +196,9 @@ function hideHiderButton() {
     roleHiderButton.style.display = "none";
 }
 
-function openGuesser() {
-    roleGuesserSection.style.display = "flex";
-}
+// The following functions decide wich image to display, when to display them and when to remove them
 
-function closeGuesser() {
-    roleGuesserSection.style.display = "none";
-}
-
-function openHider() {
-    roleHiderSection.style.display = "flex";
-}
-
-function closeHider() {
-    roleHiderSection.style.display = "none";
-}
-
-// This function will display the image
+// This function will display the image chosen from the array of objects bubbleList using the index as an argument
 function displayBubbleImage(bubbleList) {
 
     let bubbleDisplayed = document.createElement("img");
@@ -206,7 +209,7 @@ function displayBubbleImage(bubbleList) {
     bubbleImageSection.appendChild(bubbleDisplayed);
 }
 
-// This function will display the image given as an argument
+// This function will display the image chosen from the array of objects imageList using the index as an argument
 function displayImage(imageList) {
 
     let imageDisplayed = document.createElement("img");
@@ -305,16 +308,21 @@ function displayComputerWagerImage(computerWager) {
 
 }
 
-// removes the images displayed
+// removes the hand images displayed
 function clearImage () {
     imageSection.innerHTML = "";
 }
 
+// removes the speech bubble displayed
 function clearBubble() {
     bubbleImageSection.innerHTML = "";
 }
 
-// Functions to either show or hide OE and wager buttons
+// The following functions are responsible for the game flow, they will be listed in order of appearance
+
+/**
+ * Function to render the OE buttons visible, clear the old hand images and assign new hand images during the player's guesser turn
+ */
 function showOE() {
     clearImage();
 
@@ -324,7 +332,10 @@ function showOE() {
     oddEvenSection.style.display = "flex";
 }
 
-// Function to handle the player's OE when guessing
+/**
+ * 
+ * @param {string} oe passed through the string "odd" or "even" 
+ */
 function handleOE(oe) {
     playerOE = oe;
     hideOE();
@@ -588,6 +599,7 @@ function playerHider() {
 /* Start Button removes Menu, toggles the Game screen and starts the playgame() function */
 function startGame(event) {
 
+    closeRules();
     menu.style.display = "none";
     gameSection.style.display = "flex";
 

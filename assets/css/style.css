@@ -81,6 +81,7 @@ body {
     font-family: "the shape of things", sans-serif;
     position: relative;
     left: 25px;
+    text-shadow: 5px 5px rgba(100, 100, 111, 0.2);
 }
 
 #game-section {
