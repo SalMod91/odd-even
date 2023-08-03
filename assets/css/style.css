@@ -461,18 +461,20 @@ body {
 
 .guesser {
     color: #f44786;
+    text-transform: uppercase;
 }
 
 .hider {
     color: #249f9c;
+    text-transform: uppercase;
 }
 
 .odd {
     color: #f44786;
-    text-transform: capitalize;
+    text-transform: uppercase;
 }
 
 .even {
     color: #249f9c;
-    text-transform: capitalize;
+    text-transform: uppercase;
 }
