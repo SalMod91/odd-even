@@ -42,6 +42,8 @@ let computerWager;
 let playerMarbles;
 let computerMarbles;
 let endTurnTimeOut;
+let endGameVictoryTimeOut;
+let endGameDefeatTimeOut;
 
 // Hand images depicting the player and computer status and showing the amount of marbles hidden/wagered
 const imageList = [
@@ -420,7 +422,11 @@ function guesserLose() {
         <p>You <span class='guesser'>Lost</span> this round.</p>`;
 }
 
+/**
+ * Updates the displayed player and computer marbles score
+ */
 function scoreUpdate() {
+
     // Limit playerMarbles and computerMarbles to a range of 0 to 20
     playerMarbles = Math.min(Math.max(playerMarbles, 0), 20);
     computerMarbles = Math.min(Math.max(computerMarbles, 0), 20);
@@ -428,6 +434,31 @@ function scoreUpdate() {
     // Update the displayed player and computer marble score
     playerMarblesCounter.textContent = playerMarbles;
     computerMarblesCounter.textContent = computerMarbles;
+}
+
+// Conditional statement in order to end the game when a certain criteria has been met, if the game didn't end it switches the player turn
+function turnEnd() {
+    if (playerMarbles >= 20) {
+        endGameVictoryTimeOut = setTimeout(victory, 3000);
+    } else if (playerMarbles <= 0) {
+        endGameDefeatTimeOut = setTimeout(defeat, 3000);
+    } else {
+        endTurnTimeOut = setTimeout(function () {
+
+            switchTurn();
+            if (playerTurn) {
+                clearBubble();
+                playerGuesser();
+                showGuesserButton();
+                showOE();
+            } else {
+                clearBubble();
+                playerHider();
+                showHiderButton();
+                showHider();
+            }
+        }, 3000);
+    }
 }
 
 // List of functions necessary for the game flow in order of appearance
@@ -696,31 +727,6 @@ function compareHider() {
     turnEnd();
 }
 
-// Conditional statement in order to end the game when a certain criteria has been met, if the game didn't end it switches the player turn
-function turnEnd() {
-    if (playerMarbles >= 20) {
-        setTimeout(victory, 3000);
-    } else if (playerMarbles <= 0) {
-        setTimeout(defeat, 3000);
-    } else {
-        endTurnTimeOut = setTimeout(function () {
-
-            switchTurn();
-            if (playerTurn) {
-                clearBubble();
-                playerGuesser();
-                showGuesserButton();
-                showOE();
-            } else {
-                clearBubble();
-                playerHider();
-                showHiderButton();
-                showHider();
-            }
-        }, 3000);
-    }
-}
-
 // Function in order to end the game if the player wins
 function victory() {
     playerStatus.textContent = "You have won the game!";
@@ -783,6 +789,8 @@ function playgame() {
 function quitGame(event) {
 
     clearTimeout(endTurnTimeOut);
+    clearTimeout(endGameVictoryTimeOut);
+    clearTimeout(endGameDefeatTimeOut);
 
     gameSection.style.display = "none";
     clearImage();
