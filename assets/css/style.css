@@ -9,12 +9,12 @@
     src: url("../font/the-shape-of-things.otf")
 }
 
-/* Temporary Background simulating sand */
+/* Background taken from Squid Game */
 body {
     background: url(../images/background.jpg);
 }
 
-/* Game Container temporary */
+/* Contains every element inside */
 #game-container {
     max-width: 60%;
     min-height: 95vh;
@@ -23,7 +23,7 @@ body {
     margin: 0 auto;
 }
 
-/* Start Menu */
+/* Container for the start menu */
 #menu {
     display: flex;
     justify-content: space-between;
@@ -36,7 +36,7 @@ body {
     background-color: #eccca2;
 }
 
-/* Rules not visible until Rules Button is pressed */
+/* Rules Section of the main menu */
 #rules-section {
     background: white;
     padding: 20px;
@@ -50,7 +50,7 @@ body {
     font-family: sans-serif;
 }
 
-/* Button for rules and start game */
+/* Buttons for rules and start game */
 #rules-close, #rules-open, #start-button {
     width: 260px;
     height: 60px;
@@ -62,15 +62,18 @@ body {
     cursor: pointer;
 }
 
+/* Hover rules for the buttons */
 #rules-close:hover, #rules-open:hover, #start-button:hover {
     background-color: #f2f2f2;
 }
 
+/* Button press effect for the buttons in the main menu */
 #rules-close:active, #rules-open:active, #start-button:active {
     transform: translateY(5px);
     box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
 }
 
+/* Rules for the game title */
 #game-title {
     font-size: 500%;
     font-family: "the shape of things", sans-serif;
@@ -79,6 +82,7 @@ body {
     text-shadow: 5px 5px rgba(100, 100, 111, 0.2);
 }
 
+/* Container for the interactive game */
 #game-section {
     display: none;
     justify-content: space-between;
@@ -91,11 +95,13 @@ body {
     position: relative;
 }
 
+/* Container for the role buttons */
 #role-button-container {
     position: absolute;
     left: 10px;
 }
 
+/* Button for opening the guesser rules */
 #role-guesser-button {
     display: none;
     width: 200px;
@@ -110,15 +116,7 @@ body {
     box-shadow: 0px 7px 0px 0px rgba(100, 100, 111, 0.6);
 }
 
-#role-guesser-button:hover {
-    background-color: #f2f2f2;
-}
-
-#role-guesser-button:active {
-    transform: translateY(5px);
-    box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
-}
-
+/* Section for the guesser rules */
 #role-guesser-section {
     background: white;
     padding: 20px;
@@ -132,6 +130,7 @@ body {
     font-size: 120%;
 }
 
+/* Button for closing the guesser rules section */
 #role-guesser-close {
     width: 260px;
     height: 60px;
@@ -143,15 +142,7 @@ body {
     cursor: pointer;
 }
 
-#role-guesser-close:hover {
-    background-color: #f2f2f2;
-}
-
-#role-guesser-close:active {
-    transform: translateY(5px);
-    box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
-}
-
+/* Button for opening the hider rules */
 #role-hider-button {
     display: none;
     width: 170px;
@@ -166,15 +157,7 @@ body {
     box-shadow: 0px 7px 0px 0px rgba(100, 100, 111, 0.6);
 }
 
-#role-hider-button:hover {
-    background-color: #f2f2f2;
-}
-
-#role-hider-button:active {
-    transform: translateY(5px);
-    box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
-}
-
+/* Section for the hider rules */
 #role-hider-section {
     background: white;
     padding: 20px;
@@ -188,6 +171,7 @@ body {
     font-size: 120%;
 }
 
+/* Button for closing the hider rules section */
 #role-hider-close {
     width: 260px;
     height: 60px;
@@ -199,20 +183,13 @@ body {
     cursor: pointer;
 }
 
-#role-hider-close:hover {
-    background-color: #f2f2f2;
-}
-
-#role-hider-close:active {
-    transform: translateY(5px);
-    box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
-}
-
+/* Container for the quit button */
 #quit-button-container {
     position: absolute;
     right: 10px;
 }
 
+/* Quit button (SHOCKER!!) */
 #quit-button {
     width: 120px;
     height: 60px;
@@ -226,15 +203,7 @@ body {
     box-shadow: 0px 7px 0px 0px rgba(100, 100, 111, 0.6);
 }
 
-#quit-button:hover {
-    background-color: #f2f2f2;
-}
-
-#quit-button:active {
-    transform: translateY(5px);
-    box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
-}
-
+/* Section wich contains the speech bubble images */
 #bubble-image-section {
     display: flex;
     width: 100%;
@@ -244,11 +213,13 @@ body {
     height: 110px;
 }
 
+/* The speech bubble image */
 .bubble {
     width: 200px;
     height: 200px;
 }
 
+/* Section containing the hand images */
 #image-section {
     display: flex;
     width: 100%;
@@ -257,12 +228,14 @@ body {
     justify-content: space-between;
 }
 
+/* Left hand image for the player */
 .left {
     width: 350px;
     position: absolute;
     left: -21px;
 }
 
+/* Right hand image flipped for the computer */
 .right {
     width: 350px;
     transform: scaleX(-1);
@@ -270,6 +243,7 @@ body {
     right: -21px;
 }
 
+/* Section containing the pouch images and score text */
 #score-section {
     display: flex;
     position: relative;
@@ -278,10 +252,12 @@ body {
     justify-content: space-between;
 }
 
+/* Pouch image */
 .pouch {
     width: 150px;
 }
 
+/* Player score */
 #player-marble {
     position: absolute;
     left: 47px;
@@ -289,6 +265,7 @@ body {
     font-size: 200%;
 }
 
+/* Computer score */
 #computer-marble {
     position: absolute;
     right: 78px;
@@ -296,6 +273,7 @@ body {
     font-size: 200%;
 }
 
+/* Box for information for the player through text */
 #information-section {
     display: flex;
     align-items: center;
@@ -308,6 +286,7 @@ body {
     background-color: rgba(246,215,176, .85);
 }
 
+/* Active role */
 #player-status {
     position: relative;
     bottom: 20px;
@@ -315,6 +294,7 @@ body {
     text-align: center;
 }
 
+/* Container for the OE section */
 #odd-even-container {
     display: none;
     align-items: center;
@@ -324,16 +304,19 @@ body {
     bottom: 70px;
 }
 
+/* OE buttons container */
 #odd-even-button-container {
     display: flex;
     align-items: center;
     flex-direction: row;
 }
 
+/* OE buttons margin */
 #odd-even-container button {
     margin: 5px;
 }
 
+/* Odd button (ANOTHER SHOCKER) */
 #odd-button {
     width: 90px;
     height: 50px;
@@ -347,15 +330,7 @@ body {
     box-shadow: 0px 7px 0px 0px rgba(100, 100, 111, 0.6);
 }
 
-#odd-button:hover {
-    background-color: #f2f2f2;
-}
-
-#odd-button:active {
-    transform: translateY(5px);
-    box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
-}
-
+/* Even button (YET ANOTHER SHOCKER) */
 #even-button {
     width: 90px;
     height: 50px;
@@ -369,15 +344,7 @@ body {
     box-shadow: 0px 7px 0px 0px rgba(100, 100, 111, 0.6);
 }
 
-#even-button:hover {
-    background-color: #f2f2f2;
-}
-
-#even-button:active {
-    transform: translateY(5px);
-    box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
-}
-
+/* Container for the wager section */
 #wager-container {
     display: none;
     align-items: center;
@@ -387,12 +354,14 @@ body {
     bottom: 70px;
 }
 
+/* Container for the wager buttons */
 #wager-button-container {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
+/* Wager button (The shocker joke is getting old, i'll stop now) */
 .wager-button {
     margin: 5px;
     width: 90px;
@@ -407,15 +376,7 @@ body {
     box-shadow: 0px 7px 0px 0px rgba(100, 100, 111, 0.6);
 }
 
-.wager-button:hover {
-    background-color: #f2f2f2;
-}
-
-.wager-button:active {
-    transform: translateY(5px);
-    box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
-}
-
+/* Container for the hider section */
 #hider-container {
     display: none;
     align-items: center;
@@ -425,12 +386,14 @@ body {
     bottom: 60px;
 }
 
+/* Container for the hider buttons */
 #hider-button-container {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
+/* Hider button....PLOT TWIST! */
 .hider-button {
     margin: 5px;
     width: 90px;
@@ -445,31 +408,37 @@ body {
     box-shadow: 0px 7px 0px 0px rgba(100, 100, 111, 0.6);
 }
 
-.hider-button:hover {
-    background-color: #f2f2f2;
-}
-
-.hider-button:active {
-    transform: translateY(5px);
-    box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
-}
-
+/* Color for specific text representing danger */
 .guesser {
     color: #f44786;
     text-transform: uppercase;
 }
 
+/* Color for specific text representing a reward */
 .hider {
     color: #249f9c;
     text-transform: uppercase;
 }
 
+/* Color for specific in game choices representing odd, the reason this is the same as .guesser is because it is used as an argument for a function */
 .odd {
     color: #f44786;
     text-transform: uppercase;
 }
 
+/* Color for specific in game choices representing even, the reason this is the same as .hider is because it is used as an argument for a function */
 .even {
     color: #249f9c;
     text-transform: uppercase;
+}
+
+/* Hover effect for the game buttons in order of appearance*/
+#role-guesser-button:hover, #role-guesser-close:hover, #role-hider-button:hover, #role-hider-close:hover, #quit-button:hover, #odd-button:hover, #even-button:hover, .wager-button:hover, .hider-button:hover {
+    background-color: #f2f2f2;
+}
+
+/* On press effect for the game buttons in order of appearance */
+#role-guesser-button:active, #role-guesser-close:active, #role-hider-button:active, #role-hider-close:active, #quit-button:active, #odd-button:active, #even-button:active, .wager-button:active, .hider-button:active {
+    transform: translateY(5px);
+    box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
 }
