@@ -420,6 +420,11 @@ function guesserLose() {
         <p>You <span class='guesser'>Lost</span> this round.</p>`;
 }
 
+function scoreUpdate() {
+    playerMarblesCounter.textContent = playerMarbles;
+    computerMarblesCounter.textContent = computerMarbles;
+}
+
 // List of functions necessary for the game flow in order of appearance
 
 /**
@@ -559,8 +564,7 @@ function compareOE() {
     }
 
     // Updates the displayed score
-    playerMarblesCounter.textContent = playerMarbles;
-    computerMarblesCounter.textContent = computerMarbles;
+    scoreUpdate();
 
     turnEnd();
 }
