@@ -1,9 +1,4 @@
-/* Font test */
-@font-face {
-    font-family: squidgame;
-    src: url("../font/game-of-squids.ttf")
-}
-
+/* Fonts */
 @font-face {
     font-family: azonix;
     src: url("../font/azonix.otf")

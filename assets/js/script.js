@@ -399,8 +399,8 @@ function startGame(event) {
     playerMarblesCounter.textContent = playerMarbles;
     computerMarblesCounter.textContent = computerMarbles;
 
-    // Sets the player's guesser turn
-    playerTurn = true;
+    // Rolls for player turn being true with a 50% chance
+    playerTurn = Math.random() < 0.5;
 
     // Runs the game depending on the player's turn
     playGame();
