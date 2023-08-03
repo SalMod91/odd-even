@@ -211,7 +211,7 @@ function closeHider(event) {
  * Displays the guesser button by changing its display style to "flex".
  */
 function showGuesserButton() {
-    roleGuesserButton.style.display = "flex";
+    roleGuesserButton.style.display = "block";
 }
 
 /**
@@ -222,10 +222,10 @@ function hideGuesserButton() {
 }
 
 /**
- * Displays the hider button by changing its display style to "flex".
+ * Displays the hider button by changing its display style to "block".
  */
 function showHiderButton() {
-    roleHiderButton.style.display = "flex";
+    roleHiderButton.style.display = "block";
 }
 
 /**
