@@ -406,11 +406,12 @@ function calculatePlayerMarblesLeft() {
 /**
  * Indicates in the player status section a successful player guess and victory
  */
-function guesserWin () {
+function guesserWin() {
 
     // Updates the player's status message to indicate what the computer chose and that the player won
-    playerStatus.innerHTML = `<p>Computer chose an <span class="${computerOE}">${computerOE}</span> number of marbles and you guessed correctly.</p>
-<p>You <span class='hider'>Win</span> this round.</p>`;
+    playerStatus.innerHTML = `<p>Computer chose an <span class="${computerOE}">${computerOE}</span> number of marbles</p> 
+    <p>You guessed correctly.</p>
+    <p>You <span class='hider'>Win</span> this round.</p>`;
 }
 
 /**
@@ -418,8 +419,9 @@ function guesserWin () {
  */
 function guesserLose() {
     // Updates the player's status message to indicate what the computer chose and that the player lost
-    playerStatus.innerHTML = `<p>Computer chose an <span class="${computerOE}">${computerOE}</span> number of marbles and you guessed wrong.</p>
-        <p>You <span class='guesser'>Lost</span> this round.</p>`;
+    playerStatus.innerHTML = `<p>Computer chose an <span class="${computerOE}">${computerOE}</span> number of marbles</p>
+    <p>You guessed wrong.</p>
+    <p>You <span class='guesser'>Lost</span> this round.</p>`;
 }
 
 /**
@@ -436,24 +438,43 @@ function scoreUpdate() {
     computerMarblesCounter.textContent = computerMarbles;
 }
 
-// Conditional statement in order to end the game when a certain criteria has been met, if the game didn't end it switches the player turn
+/**
+ * Function that runs at the end of a turn.
+ * Calculates if the game is over. If the game is not over it handles the switch of the player's turn and progresses the game.
+ */
 function turnEnd() {
+
+    // If the player's marble counter is 20 or higher the player wins
     if (playerMarbles >= 20) {
+        // Set a timeout to call the victory() function after 3 seconds
         endGameVictoryTimeOut = setTimeout(victory, 3000);
-    } else if (playerMarbles <= 0) {
+    } 
+    // If the player's marble counter 0 or lower the player loses
+    else if (playerMarbles <= 0) {
+        // Set a timeout to call the defeat() function after 3 seconds
         endGameDefeatTimeOut = setTimeout(defeat, 3000);
     } else {
+        // Set a timeout for switch of the turn
         endTurnTimeOut = setTimeout(function () {
-
+            // Switches the player's turn
             switchTurn();
+
+            // Checks if it is the player's turn to be the guesser
             if (playerTurn) {
+                // Clears the bubble speech image and displays the player status message indicating that the player is the guesser
                 clearBubble();
                 playerGuesser();
+
+                // Displays the guesser rule section button and the OE buttons
                 showGuesserButton();
                 showOE();
+
             } else {
+                // Clears the bubble speech image and displays the player status message indicating that the player is the hider
                 clearBubble();
                 playerHider();
+
+                // Displays the hider rule section button and the hider buttons
                 showHiderButton();
                 showHider();
             }
@@ -555,7 +576,7 @@ function hideWager() {
 }
 
 /**
- * Rolls the computer OE choise and compares it with the player's guess, updates scores and ends/advances the game.
+ * Rolls the computer OE choice and compares it with the player's guess, updates scores and ends/advances the game.
  */
 function compareOE() {
 
@@ -585,14 +606,14 @@ function compareOE() {
 
     if (playerWins) {
 
-        // Subtracts the wager from the computer marbles and adds to the player marbles, displays a winning message
+        // Subtracts the wager from the computer marbles and adds it to the player marbles, displays a winning message
         playerMarbles += playerWager;
         computerMarbles -= playerWager;
         guesserWin();
 
     } else {
 
-        // Subtracts the wager from the player marbles and adds to the computer marbles, displays a losing message
+        // Subtracts the wager from the player marbles and adds it to the computer marbles, displays a losing message
         playerMarbles -= playerWager;
         computerMarbles += playerWager;
         guesserLose();
@@ -602,6 +623,7 @@ function compareOE() {
     // Updates the displayed score
     scoreUpdate();
 
+    // Ends the game if the player's marble score is 20/0 or switches turn and progresses the game
     turnEnd();
 }
 
