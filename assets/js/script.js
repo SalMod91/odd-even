@@ -1,4 +1,4 @@
-// creating the sections that will be interchangable 
+// Creating the sections wich visibility will be interchangable 
 const menu = document.getElementById("menu");
 const rulesSection = document.getElementById("rules-section");
 const gameSection = document.getElementById("game-section");
@@ -131,20 +131,13 @@ const bubbleList = [
 
 // Event listeners
 openRulesButton.addEventListener("click", openRules);
-
 closeRulesButton.addEventListener("click", closeRules);
-
 startButton.addEventListener("click", startGame);
-
 quitButton.addEventListener("click", quitGame);
-
-roleGuesserButton.addEventListener("click", openGuesser);
-
-roleHiderButton.addEventListener("click", openHider);
-
-closeGuesserButton.addEventListener("click", closeGuesser);
-
-closeHiderButton.addEventListener("click", closeHider);
+roleGuesserButton.addEventListener("click", openGuesserRules);
+roleHiderButton.addEventListener("click", openHiderRules);
+closeGuesserButton.addEventListener("click", closeGuesserRules);
+closeHiderButton.addEventListener("click", closeHiderRules);
 
 // Event listener for OE buttons to call the handleOE function
 oddButton.addEventListener("click", function () {
@@ -177,7 +170,7 @@ function closeRules(event) {
  * Opens the guesser rules section by changing its display style to "flex".
  * @param {Event} event - The event that triggered the function, in this case a click event.
  */
-function openGuesser(event) {
+function openGuesserRules(event) {
     roleGuesserSection.style.display = "flex";
 }
 
@@ -185,7 +178,7 @@ function openGuesser(event) {
  * Closes the guesser rules section by changing its display style to "none".
  * @param {Event} event - The event that triggered the function, in this case a click event.
  */
-function closeGuesser(event) {
+function closeGuesserRules(event) {
     roleGuesserSection.style.display = "none";
 }
 
@@ -193,7 +186,7 @@ function closeGuesser(event) {
  * Opens the hider rules section by changing its display style to "flex".
  * @param {Event} event - The event that triggered the function, in this case a click event.
  */
-function openHider(event) {
+function openHiderRules(event) {
     roleHiderSection.style.display = "flex";
 }
 
@@ -201,7 +194,7 @@ function openHider(event) {
  * Closes the hider rules section by changing its display style to "none".
  * @param {Event} event - The event that triggered the function, in this case a click event.
  */
-function closeHider(event) {
+function closeHiderRules(event) {
     roleHiderSection.style.display = "none";
 }
 
@@ -215,7 +208,7 @@ function showGuesserButton() {
 }
 
 /**
- * Closes the guesser button by changing its display style to "none".
+ * Hides the guesser button by changing its display style to "none".
  */
 function hideGuesserButton() {
     roleGuesserButton.style.display = "none";
@@ -229,7 +222,7 @@ function showHiderButton() {
 }
 
 /**
- * Closes the hider button by changing its display style to "none".
+ * Hides the hider button by changing its display style to "none".
  */
 function hideHiderButton() {
     roleHiderButton.style.display = "none";
@@ -239,7 +232,7 @@ function hideHiderButton() {
 
 /**
  * Displays a bubble speech image based on the provided bubbleList array of objects.
- * Creates an <img> element with the specified source and alt attributes,
+ * Creates an img element with the specified source and alt attributes,
  * adds the "bubble" class and appends it as a child to the bubbleImageSection.
  * @param {Array} bubbleList - An array of objects containing several images of speech bubbles. Each object has a source (src) and alternative text (alt) property.
  */
@@ -255,7 +248,7 @@ function displayBubbleImage(bubbleList) {
 
 /**
  * Displays a hand image based on the provided imageList array of objects.
- * Creates an <img> element with the specifies source, alt and class attributes and appens it as a child to the imageSection.
+ * Creates an img element with the specified source, alt and class attributes and appens it as a child to the imageSection.
  * @param {Array} imageList - An array of objects containing several hand images. Each object has a source (src), alternative text (alt) and a class.
  */
 function displayImage(imageList) {
@@ -382,6 +375,67 @@ function clearBubble() {
 // The following functions are used for game stats and events
 
 /**
+ * Closes the rules in the menu if they are open.
+ * Closes the menu by changing its display style to "none" and opens the game section by changing its display style to "flex".
+ * Sets the score to 10 for both players.
+ * Sets the player's turn to guesser (true);
+ * Starts the playGame() function.
+ * @param {Event} event - The event that triggered the function, in this case a click event. 
+ */
+function startGame(event) {
+
+    // Closes the rules section
+    closeRules();
+    
+    // Closes the menu and opens the game section
+    menu.style.display = "none";
+    gameSection.style.display = "flex";
+
+    // Sets the player and computer score to 10
+    playerMarbles = 10;
+    computerMarbles = 10;
+
+    // Displays the score as textContent for the counter
+    playerMarblesCounter.textContent = playerMarbles;
+    computerMarblesCounter.textContent = computerMarbles;
+
+    // Sets the player's guesser turn
+    playerTurn = true;
+
+    // Runs the game depending on the player's turn
+    playGame();
+}
+
+/**
+ * This function will start the flow of the game according to the player's turn
+ */
+function playGame() {
+    if (playerTurn) {
+        playerGuesser();
+        showGuesserButton();
+        showOE();
+    } else {
+        playerHider();
+        showHiderButton();
+        showHider();
+    }
+}
+
+/**
+ * Informs the player that its role is the guesser
+ */
+function playerGuesser() {
+    playerStatus.innerHTML = "<p>You are the <span class='guesser'>Guesser!</span></p>";
+}
+
+/**
+ * Informs the player that its role is the hider
+ */
+function playerHider() {
+    playerStatus.innerHTML = "<p>You are the <span class='hider'>Hider!</span></p>";
+}
+
+/**
  * Calculates the amount of marbles the computer has left with a maximum value of 4.
  * This function ensures that the computer will not use more marbles than it has left.
  * @returns {number} - The number of computer marbles left up to a maximum of 4.
@@ -429,6 +483,9 @@ function guesserLossMessage() {
     <p>You guessed wrong and <span class="guesser">LOST ${playerWagerAmount}</span>.</p>`;
 }
 
+/**
+ * Indicates in the player status section an unsuccessful guess by the computer resulting in the player's win
+ */
 function hiderWinMessage() {
 
     // This variable handles the pluralization of the word marble
@@ -439,6 +496,9 @@ function hiderWinMessage() {
     <p>Computer wagered and <span class="hider">lost ${computerWagerAmount}</span>.</p>`;
 }
 
+/**
+ * Indicates in the player status section a successful guess by the computer resulting in the player's loss
+ */
 function hiderLossMessage() {
 
     // This variable handles the pluralization of the word marble
@@ -450,7 +510,7 @@ function hiderLossMessage() {
 }
 
 /**
- * Updates the displayed player and computer marbles score
+ * Updates the displayed player and computer marbles score making sure the amount will not be over 20 or below 0
  */
 function scoreUpdate() {
 
@@ -513,6 +573,59 @@ function turnEnd() {
             }
         }, 3000);
     }
+}
+
+/**
+ * Quits the game and returns to the menu, clears timeouts and images. 
+ * Hides all buttons and opened rules.
+ * @param {Event} event - The event that triggered the function, in this case a click event.
+ */
+function quitGame(event) {
+
+    clearTimeout(endTurnTimeOut);
+    clearTimeout(endGameVictoryTimeOut);
+    clearTimeout(endGameDefeatTimeOut);
+
+    gameSection.style.display = "none";
+    clearImage();
+    clearBubble();
+    hideOE();
+    hideWager();
+    hideGuesserButton();
+    hideHiderButton();
+    closeGuesserRules();
+    closeHiderRules();
+    hideHider();
+    menu.style.display = "flex";
+
+}
+
+/**
+ * Function that ends the game in case the player won
+ */
+function victory() {
+
+    // Updates the status message to inform the player the he has won
+    playerStatus.innerHTML = `<p>You have <span class='hider'>won</span>!</p>`;
+
+    // After 2 seconds quits the game
+    setTimeout(function () {
+        quitGame();
+    }, 2000);
+}
+
+/**
+ * Function that ends the game in case the player lost
+ */
+function defeat() {
+
+    // Updates the status message to inform the player the he has lost
+    playerStatus.innerHTML = `<p>You have <span class='guesser'>lost</span>!</p>`;
+
+    // After 2 seconds quits the game
+    setTimeout(function () {
+        quitGame();
+    }, 2000);
 }
 
 // List of functions necessary for the game flow in order of appearance
@@ -622,7 +735,7 @@ function compareOE() {
 
     // Closes the role rules section and hides the role rules button
     hideGuesserButton();
-    closeGuesser();
+    closeGuesserRules();
 
     // Ensures the computer won't hide more marbles than he has left
     let computerMarblesLeft = calculateComputerMarblesLeft();
@@ -752,7 +865,7 @@ function compareHider() {
 
     // Closes the role rules section and hides the role rules button
     hideHiderButton();
-    closeHider();
+    closeHiderRules();
 
     // Prevents the computer from wagering more marbles than the player has left
     let playerMarblesLeft = calculatePlayerMarblesLeft();
@@ -806,83 +919,4 @@ function compareHider() {
 
     // Ends the game if the player's marble score is 20/0 or switches turn and progresses the game
     turnEnd();
-}
-
-// Function in order to end the game if the player wins
-function victory() {
-    playerStatus.textContent = "You have won the game!";
-
-    setTimeout(function () {
-        quitGame();
-    }, 2000);
-}
-
-// Function in order to end the game if the player loses
-function defeat() {
-    playerStatus.textContent = "You have been eliminated";
-
-    setTimeout(function () {
-        quitGame();
-    }, 2000);
-}
-
-// Functions to inform the player about its role
-function playerGuesser() {
-    playerStatus.innerHTML = "<p>You are the <span class='guesser'>Guesser!</span></p>";
-}
-
-function playerHider() {
-    playerStatus.innerHTML = "<p>You are the <span class='hider'>Hider!</span></p>";
-}
-
-/* Start Button removes Menu, toggles the Game screen and starts the playgame() function */
-function startGame(event) {
-
-    closeRules();
-    menu.style.display = "none";
-    gameSection.style.display = "flex";
-
-    playerMarbles = 10;
-    computerMarbles = 10;
-
-    playerMarblesCounter.textContent = playerMarbles;
-    computerMarblesCounter.textContent = computerMarbles;
-
-    playerTurn = true;
-
-    playgame();
-}
-
-// depending on the player's turn it renders the buttons visible necessary to progress the game
-function playgame() {
-    if (playerTurn) {
-        playerGuesser();
-        showGuesserButton();
-        showOE();
-    } else {
-        playerHider();
-        showHiderButton();
-        showHider();
-    }
-}
-
-// Quit button returns to the Menu and resets the game screen
-function quitGame(event) {
-
-    clearTimeout(endTurnTimeOut);
-    clearTimeout(endGameVictoryTimeOut);
-    clearTimeout(endGameDefeatTimeOut);
-
-    gameSection.style.display = "none";
-    clearImage();
-    clearBubble();
-    hideOE();
-    hideWager();
-    hideGuesserButton();
-    hideHiderButton();
-    closeGuesser();
-    closeHider();
-    hideHider();
-    menu.style.display = "flex";
-
 }
