@@ -421,6 +421,11 @@ function guesserLose() {
 }
 
 function scoreUpdate() {
+    // Limit playerMarbles and computerMarbles to a range of 0 to 20
+    playerMarbles = Math.min(Math.max(playerMarbles, 0), 20);
+    computerMarbles = Math.min(Math.max(computerMarbles, 0), 20);
+    
+    // Update the displayed player and computer marble score
     playerMarblesCounter.textContent = playerMarbles;
     computerMarblesCounter.textContent = computerMarbles;
 }
@@ -686,8 +691,7 @@ function compareHider() {
     }
 
     // Updates the displayed score
-    playerMarblesCounter.textContent = playerMarbles;
-    computerMarblesCounter.textContent = computerMarbles;
+    scoreUpdate();
 
     turnEnd();
 }
