@@ -1,108 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-    
+
     <title>Odd or Even</title>
 </head>
+
 <body>
-    <div id="background"></div>
-    <section id="game-container">
-        <div id="menu">
-            <div id="rules-section">
-                <h2>Rules!</h2>
-                <p>Welcome to the Odd or Even game!</p>
-                <p>The objective of the game is to correctly guess whether the total number of marbles is odd or even.</p>
-                <p>Here's how the game works:</p>
-                <ul>
-                    <li>Both you and your opponent start with 10 marbles each.</li>
-                    <li>On each turn, the guesser will wager a number of marbles and the hider hides an amount of marbles.</li>
-                    <li>The guesser has to guess if the total number of marbles that the hider is hiding is odd or even.</li>
-                    <li>For balance sake both the player and the computer can only wager or hide a maximum of 4 marbles.</li>
-                    <li>If the guesser guesses correctly, the hider gives the amount of marbles wagered to the guesser.</li>
-                    <li>If the guesser guesses incorrectly, the guesser gives the amount of marbles wagered to the hider.</li>
-                    <li>The game continues until the player has lost or won all the marbles.</li>
-                </ul>
-                <p>If the rules aren't clear you can always check out the role button in the top left corner.</p>
-                <p>Are you ready to play? Click the "START GAME" button to begin!</p>
-                <button id="rules-close">CLOSE</button>
+    <main>
+        <div id="background"></div>
+        <section id="game-container">
+            <div id="menu">
+                <div id="rules-section">
+                    <h2>Rules!</h2>
+                    <p>Welcome to the Odd or Even game!</p>
+                    <p>The objective of the game is to correctly guess whether the total number of marbles is odd or
+                        even.</p>
+                    <p>Here's how the game works:</p>
+                    <ul>
+                        <li>Both you and your opponent start with 10 marbles each.</li>
+                        <li>On each turn, the guesser will wager a number of marbles and the hider hides an amount of
+                            marbles.</li>
+                        <li>The guesser has to guess if the total number of marbles that the hider is hiding is odd or
+                            even.</li>
+                        <li>For balance sake both the player and the computer can only wager or hide a maximum of 4
+                            marbles.</li>
+                        <li>If the guesser guesses correctly, the hider gives the amount of marbles wagered to the
+                            guesser.</li>
+                        <li>If the guesser guesses incorrectly, the guesser gives the amount of marbles wagered to the
+                            hider.</li>
+                        <li>The game continues until the player has lost or won all the marbles.</li>
+                    </ul>
+                    <p>If the rules aren't clear you can always check out the role button in the top left corner.</p>
+                    <p>Are you ready to play? Click the "START GAME" button to begin!</p>
+                    <button id="rules-close">CLOSE</button>
+                </div>
+                <button id="rules-open"><span class="odd">RUL</span><span class="even">ES!</span></button>
+                <h1 id="game-title"><span class="odd">ODD</span> OR <span class="even">EVEN</span></h1>
+                <button id="start-button"><span class="odd">START </span><span class="even">GAME!</span></button>
             </div>
-            <button id="rules-open"><span class="guesser">RUL</span><span class="hider">ES!</span></button>
-            <h1 id="game-title"><span class="guesser">ODD</span> OR <span class="hider">EVEN</span></h1>
-            <button id="start-button"><span class="guesser">START </span><span class="hider">GAME!</span></button>
-        </div>
-        <div id="game-section">
-            <span id="quit-button-container"><button id="quit-button">Quit</button></span>
-            <span id="role-button-container"><button id="role-guesser-button">Guesser!</button><button id="role-hider-button">Hider!</button></span>
-            <div id="role-guesser-section">
-                <h2>You are the <span class="guesser">Guesser!</span></h2>
-                <p>This is how the Guesser's turn works:</p>
-                <ul>
-                    <li>You declare if you think that the total marbles the computer is hiding is odd or even.</li>
-                    <li>You declare how many marbles you want to wager up to a maximum of 4 marbles.</li>
-                    <li>After you declared your decisions the computer has to show his hand.</li>
-                    <li>If you guessed odd or even correctly you win the amount you wagered and take it from your opponent's marbles.</li>
-                    <li>If you guessed odd or even incorrectly you give the amount of marbles wagered to your opponent.</li>
-                    <li>Afterwards the roles switch.</li>
-                    <li>The game continues until you have lost or won all 20 total marbles.</li>
-                </ul>
-                <p>By pressing the QUIT button you close the game and reset the score.</p>
-                <p>By pressing the CLOSE button you close this window.</p>
-                <button id="role-guesser-close">CLOSE</button>
-            </div>
+            <div id="game-section">
+                <span id="quit-button-container"><button id="quit-button">Quit</button></span>
+                <span id="role-button-container"><button id="role-guesser-button">Guesser!</button><button
+                        id="role-hider-button">Hider!</button></span>
+                <div id="role-guesser-section">
+                    <h2>You are the <span class="odd">Guesser!</span></h2>
+                    <p>This is how the Guesser's turn works:</p>
+                    <ul>
+                        <li>You declare if you think that the total marbles the computer is hiding is odd or even.</li>
+                        <li>You declare how many marbles you want to wager up to a maximum of 4 marbles.</li>
+                        <li>After you declared your decisions the computer has to show his hand.</li>
+                        <li>If you guessed odd or even correctly you win the amount you wagered and take it from your
+                            opponent's marbles.</li>
+                        <li>If you guessed odd or even incorrectly you give the amount of marbles wagered to your
+                            opponent.</li>
+                        <li>Afterwards the roles switch.</li>
+                        <li>The game continues until you have lost or won all 20 total marbles.</li>
+                    </ul>
+                    <p>By pressing the QUIT button you close the game and reset the score.</p>
+                    <p>By pressing the CLOSE button you close this window.</p>
+                    <button id="role-guesser-close">CLOSE</button>
+                </div>
 
-            <div id="role-hider-section">
-                <h2>You are the <span class="hider">Hider!</span></h2>
-                <p>This is how the Hider's turn works:</p>
-                <ul>
-                    <li>You hide a certain amount of marbles and your opponent declares if the total marbles is either odd or even.</li>
-                    <li>If your opponent guessed odd or even correctly your opponent takes an amount of marbles from you based on your opponent's wager.</li>
-                    <li>If your opponent guessed odd or even incorrectly you take an amount of marbles from your opponent based on your opponent's wager.</li>
-                    <li>Afterwards the roles switch.</li>
-                    <li>The game continues until you have lost or won all 20 total marbles.</li>
-                </ul>
-                <p>By pressing the QUIT button you close the game and reset the score.</p>
-                <p>By pressing the CLOSE button you close this window.</p>
-                <button id="role-hider-close">CLOSE</button>
-            </div>
+                <div id="role-hider-section">
+                    <h2>You are the <span class="even">Hider!</span></h2>
+                    <p>This is how the Hider's turn works:</p>
+                    <ul>
+                        <li>You hide a certain amount of marbles and your opponent declares if the total marbles is
+                            either odd or even.</li>
+                        <li>If your opponent guessed odd or even correctly your opponent takes an amount of marbles from
+                            you based on your opponent's wager.</li>
+                        <li>If your opponent guessed odd or even incorrectly you take an amount of marbles from your
+                            opponent based on your opponent's wager.</li>
+                        <li>Afterwards the roles switch.</li>
+                        <li>The game continues until you have lost or won all 20 total marbles.</li>
+                    </ul>
+                    <p>By pressing the QUIT button you close the game and reset the score.</p>
+                    <p>By pressing the CLOSE button you close this window.</p>
+                    <button id="role-hider-close">CLOSE</button>
+                </div>
 
-            <div id="bubble-image-section"></div>
-            <div id="image-section">
-            </div>
-            <div id="score-section">
-                <span>
-                    <img class="pouch" src="assets/images/marble-pouch.webp" alt="A pouch with marbles used to keep score">
-                </span>
-                <p id="player-marble"></p>
-                <p id="computer-marble"></p>
-                <span>
-                    <img class="pouch" src="assets/images/marble-pouch.webp" alt="A pouch with marbles used to keep score">
-                </span>
-            </div>
-            <div id="information-section">
-                <p id="player-status"></p>
-                <div id="odd-even-container">
-                    <p>Choose Odd or Even:</p>
-                    <span id="odd-even-button-container">
-                        <button id="odd-button">Odd</button>
-                        <button id="even-button">Even</button>
+                <div id="bubble-image-section"></div>
+                <div id="image-section">
+                </div>
+                <div id="score-section">
+                    <span>
+                        <img class="pouch" src="assets/images/marble-pouch.webp"
+                            alt="A pouch with marbles used to keep score">
+                    </span>
+                    <p id="player-marble"></p>
+                    <p id="computer-marble"></p>
+                    <span>
+                        <img class="pouch" src="assets/images/marble-pouch.webp"
+                            alt="A pouch with marbles used to keep score">
                     </span>
                 </div>
-            
-                <div id="hider-container">
-                    <p>Choose how many Marbles you want to hide:</p>
-                    <span id="hider-button-container"></span>
-                </div>
+                <div id="information-section">
+                    <p id="player-status"></p>
+                    <div id="odd-even-container">
+                        <p>Choose Odd or Even:</p>
+                        <span id="odd-even-button-container">
+                            <button id="odd-button">Odd</button>
+                            <button id="even-button">Even</button>
+                        </span>
+                    </div>
 
-                <div id="wager-container">
-                    <p>How much do you wager?</p>
-                    <span id="wager-button-container"></span>
+                    <div id="hider-container">
+                        <p>Choose how many Marbles you want to hide:</p>
+                        <span id="hider-button-container"></span>
+                    </div>
+
+                    <div id="wager-container">
+                        <p>How much do you wager?</p>
+                        <span id="wager-button-container"></span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
     <script src="assets/js/script.js"></script>
 </body>
+
 </html>

@@ -51,7 +51,9 @@ body {
 }
 
 /* Buttons for rules and start game */
-#rules-close, #rules-open, #start-button {
+#rules-close,
+#rules-open,
+#start-button {
     width: 260px;
     height: 60px;
     font-size: 200%;
@@ -63,12 +65,16 @@ body {
 }
 
 /* Hover rules for the buttons */
-#rules-close:hover, #rules-open:hover, #start-button:hover {
+#rules-close:hover,
+#rules-open:hover,
+#start-button:hover {
     background-color: #f2f2f2;
 }
 
 /* Button press effect for the buttons in the main menu */
-#rules-close:active, #rules-open:active, #start-button:active {
+#rules-close:active,
+#rules-open:active,
+#start-button:active {
     transform: translateY(5px);
     box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
 }
@@ -283,7 +289,7 @@ body {
     width: 100%;
     height: 25%;
     top: 1%;
-    background-color: rgba(246,215,176, .85);
+    background-color: rgba(246, 215, 176, .85);
 }
 
 /* Active role */
@@ -361,7 +367,7 @@ body {
     align-items: center;
 }
 
-/* Wager button (The shocker joke is getting old, i'll stop now) */
+/* Wager buttons (The shocker joke is getting old, i'll stop now) */
 .wager-button {
     margin: 5px;
     width: 90px;
@@ -393,7 +399,7 @@ body {
     align-items: center;
 }
 
-/* Hider button....PLOT TWIST! */
+/* Hider buttons */
 .hider-button {
     margin: 5px;
     width: 90px;
@@ -408,37 +414,42 @@ body {
     box-shadow: 0px 7px 0px 0px rgba(100, 100, 111, 0.6);
 }
 
-/* Color for specific text representing danger */
-.guesser {
-    color: #f44786;
-    text-transform: uppercase;
-}
 
-/* Color for specific text representing a reward */
-.hider {
-    color: #249f9c;
-    text-transform: uppercase;
-}
-
-/* Color for specific in game choices representing odd, the reason this is the same as .guesser is because it is used as an argument for a function */
+/* Color for specific in game choices representing odd or text representing something negative */
 .odd {
     color: #f44786;
     text-transform: uppercase;
 }
 
-/* Color for specific in game choices representing even, the reason this is the same as .hider is because it is used as an argument for a function */
+/* Color for specific in game choices representing even or text representing something positive */
 .even {
     color: #249f9c;
     text-transform: uppercase;
 }
 
 /* Hover effect for the game buttons in order of appearance*/
-#role-guesser-button:hover, #role-guesser-close:hover, #role-hider-button:hover, #role-hider-close:hover, #quit-button:hover, #odd-button:hover, #even-button:hover, .wager-button:hover, .hider-button:hover {
+#role-guesser-button:hover,
+#role-guesser-close:hover,
+#role-hider-button:hover,
+#role-hider-close:hover,
+#quit-button:hover,
+#odd-button:hover,
+#even-button:hover,
+.wager-button:hover,
+.hider-button:hover {
     background-color: #f2f2f2;
 }
 
 /* On press effect for the game buttons in order of appearance */
-#role-guesser-button:active, #role-guesser-close:active, #role-hider-button:active, #role-hider-close:active, #quit-button:active, #odd-button:active, #even-button:active, .wager-button:active, .hider-button:active {
+#role-guesser-button:active,
+#role-guesser-close:active,
+#role-hider-button:active,
+#role-hider-close:active,
+#quit-button:active,
+#odd-button:active,
+#even-button:active,
+.wager-button:active,
+.hider-button:active {
     transform: translateY(5px);
     box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
 }

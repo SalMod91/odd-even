@@ -425,14 +425,14 @@ function playGame() {
  * Informs the player that its role is the guesser
  */
 function playerGuesser() {
-    playerStatus.innerHTML = "<p>You are the <span class='guesser'>Guesser!</span></p>";
+    playerStatus.innerHTML = "<p>You are the <span class='odd'>Guesser!</span></p>";
 }
 
 /**
  * Informs the player that its role is the hider
  */
 function playerHider() {
-    playerStatus.innerHTML = "<p>You are the <span class='hider'>Hider!</span></p>";
+    playerStatus.innerHTML = "<p>You are the <span class='even'>Hider!</span></p>";
 }
 
 /**
@@ -467,7 +467,7 @@ function guesserWinMessage() {
 
     // Updates the player's status message to indicate what the computer chose and that the player won
     playerStatus.innerHTML = `<p>Computer chose to hide an <span class="${computerOE}">${computerOE}</span> number of marbles</p> 
-    <p>You guessed correctly and <span class="hider">WON ${playerWagerAmount} </span>.</p>`;
+    <p>You guessed correctly and <span class="even">WON ${playerWagerAmount} </span>.</p>`;
 }
 
 /**
@@ -480,7 +480,7 @@ function guesserLossMessage() {
 
     // Updates the player's status message to indicate what the computer chose and that the player lost
     playerStatus.innerHTML = `<p>Computer chose to hide an <span class="${computerOE}">${computerOE}</span> number of marbles</p>
-    <p>You guessed wrong and <span class="guesser">LOST ${playerWagerAmount}</span>.</p>`;
+    <p>You guessed wrong and <span class="odd">LOST ${playerWagerAmount}</span>.</p>`;
 }
 
 /**
@@ -493,7 +493,7 @@ function hiderWinMessage() {
 
     // Updates the player status message informing the player of the computer's choice and that the player won
     playerStatus.innerHTML = `<p><p>Computer thinks you hide an <span class="${computerOE}">${computerOE}</span> number of marbles and guessed wrong.</p> 
-    <p>Computer wagered and <span class="hider">lost ${computerWagerAmount}</span>.</p>`;
+    <p>Computer wagered and <span class="even">lost ${computerWagerAmount}</span>.</p>`;
 }
 
 /**
@@ -506,7 +506,7 @@ function hiderLossMessage() {
 
     // Updates the player status message informing the player of the computer's choice and that the player lost
      playerStatus.innerHTML = `<p>Computer thinks you hide an <span class="${computerOE}">${computerOE}</span> number of marbles and guessed correctly.</p> 
-    <p>Computer wagered and <span class="guesser">won ${computerWagerAmount}</span>.</p>`;
+    <p>Computer wagered and <span class="odd">won ${computerWagerAmount}</span>.</p>`;
 }
 
 /**
@@ -606,7 +606,7 @@ function quitGame(event) {
 function victory() {
 
     // Updates the status message to inform the player the he has won
-    playerStatus.innerHTML = `<p>You have <span class='hider'>won</span>!</p>`;
+    playerStatus.innerHTML = `<p>You <span class='even'>won</span>!</p>`;
 
     // After 2 seconds quits the game
     setTimeout(function () {
@@ -620,7 +620,7 @@ function victory() {
 function defeat() {
 
     // Updates the status message to inform the player the he has lost
-    playerStatus.innerHTML = `<p>You have <span class='guesser'>lost</span>!</p>`;
+    playerStatus.innerHTML = `<p>You <span class='odd'>lost</span>!</p>`;
 
     // After 2 seconds quits the game
     setTimeout(function () {
