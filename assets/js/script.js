@@ -1,4 +1,5 @@
 // Creating the sections wich visibility will be interchangable 
+const gameContainer = document.getElementById("game-container");
 const menu = document.getElementById("menu");
 const rulesSection = document.getElementById("rules-section");
 const gameSection = document.getElementById("game-section");
@@ -12,6 +13,8 @@ const hiderSection = document.getElementById("hider-container");
 const wagerButtonContainer = document.getElementById("wager-button-container");
 const hiderButtonContainer = document.getElementById("hider-button-container");
 const nextTurnButtonContainer = document.getElementById("next-turn-container");
+const footer = document.getElementById("footer");
+const gitHubIcon = document.getElementById("github-icon");
 
 // Set variables to various buttons
 const evenButton = document.getElementById("even-button");
@@ -139,6 +142,11 @@ roleHiderButton.addEventListener("click", openHiderRules);
 closeGuesserButton.addEventListener("click", closeGuesserRules);
 closeHiderButton.addEventListener("click", closeHiderRules);
 nextTurnButton.addEventListener("click", nextTurn);
+
+// Turns the github icon to the odd color when clicked
+gitHubIcon.addEventListener("click", function() {
+    gitHubIcon.classList.add("clicked");
+});
 
 // Event listener for OE buttons to call the handleOE function
 oddButton.addEventListener("click", function () {
@@ -385,12 +393,14 @@ function clearBubble() {
  */
 function startGame(event) {
 
-    // Closes the rules section
+    // Closes the rules section and hides the footer
     closeRules();
+    hideFooter();
     
     // Closes the menu and opens the game section
     menu.style.display = "none";
     gameSection.style.display = "flex";
+    gameContainer.style.minHeight = "98vh";
 
     // Sets the player and computer score to 10
     playerMarbles = 10;
@@ -591,12 +601,18 @@ function nextTurn(event) {
  */
 function quitGame(event) {
 
+    // Clears the victory and defeat timeout
     clearTimeout(endGameVictoryTimeOut);
     clearTimeout(endGameDefeatTimeOut);
 
+    // Closes the game section
     gameSection.style.display = "none";
+
+    // Clears all images
     clearImage();
     clearBubble();
+
+    // Hides all buttons
     hideOE();
     hideWager();
     hideGuesserButton();
@@ -605,8 +621,12 @@ function quitGame(event) {
     closeHiderRules();
     hideHider();
     hideNextTurnButton();
-    menu.style.display = "flex";
 
+    // Shows the footer and the menu, returns the menu to it's smaller size and turns the github button back in black (ACDC would be proud of me)
+    showFooter();
+    gitHubIcon.classList.remove("clicked");
+    menu.style.display = "flex";
+    gameContainer.style.minHeight = "92vh";
 }
 
 /**
@@ -635,6 +655,20 @@ function defeat() {
     endGameDefeatTimeOut = setTimeout(function () {
         quitGame();
     }, 2000);
+}
+
+/**
+ * Renders the footer visible
+ */
+function showFooter() {
+    footer.style.display = "flex";
+}
+
+/**
+ * Hides the footer
+ */
+function hideFooter() {
+    footer.style.display ="none";
 }
 
 // List of functions necessary for the game flow in order of appearance

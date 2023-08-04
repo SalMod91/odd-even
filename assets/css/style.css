@@ -17,7 +17,7 @@ body {
 /* Contains every element inside */
 #game-container {
     max-width: 60%;
-    min-height: 95vh;
+    min-height: 92vh;
     display: flex;
     justify-content: center;
     margin: 0 auto;
@@ -28,7 +28,6 @@ body {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    min-height: 80vh;
     padding: 5%;
     align-items: center;
     width: 100%;
@@ -253,7 +252,7 @@ body {
 #score-section {
     display: flex;
     position: relative;
-    top: 16%;
+    top: 19%;
     width: 100%;
     justify-content: space-between;
 }
@@ -490,6 +489,42 @@ body {
 #next-turn-button:active {
     transform: translateY(5px);
     box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
+}
+
+#footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 140%;
+    background-color: #eccca2;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: black;
+    width: 59%;
+    border: 5px solid black;
+    margin: 0 auto;
+    height: 5%;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+#footer p {
+    padding: 0 10px;
+}
+
+#footer i {
+    padding: 0 10px;
+    font-size: 170%;
+    color: black;
+}
+
+#footer i.clicked {
+    color: #f44786;
+}
+
+#footer i:hover {
+    color: #037a76;
 }
 
 /* Media queries */
