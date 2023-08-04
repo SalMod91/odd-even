@@ -2,7 +2,6 @@
 const menu = document.getElementById("menu");
 const rulesSection = document.getElementById("rules-section");
 const gameSection = document.getElementById("game-section");
-const roleButtonSection = document.getElementById("role-button-container")
 const roleGuesserSection = document.getElementById("role-guesser-section");
 const roleHiderSection = document.getElementById("role-hider-section");
 const imageSection = document.getElementById("image-section");
