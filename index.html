@@ -14,8 +14,11 @@
 
 <body>
     <main>
+        <!-- Container for the whole game including menu and game section -->
         <section id="game-container">
+            <!-- Container for the menu section containing rules, game title and start button -->
             <div id="menu">
+                <!-- Rules section wich are rendered visible after the click event of the rules button -->
                 <div id="rules-section">
                     <h2>Rules!</h2>
                     <p>Welcome to the Odd or Even game!</p>
@@ -38,16 +41,32 @@
                     </ul>
                     <p>If the rules aren't clear you can always check out the role button in the top left corner.</p>
                     <p>Are you ready to play? Click the "START GAME" button to begin!</p>
+                    <!-- Button with event listener to close the rules section on click by changing the rules section display style to "none" -->
                     <button id="rules-close">CLOSE</button>
                 </div>
+                <!-- Button with event listener to open the rules section on click by changing the rules section display style to "flex" -->
                 <button id="rules-open"><span class="odd">RUL</span><span class="even">ES!</span></button>
+                <!-- The title of the game -->
                 <h1 id="game-title"><span class="odd">ODD</span> OR <span class="even">EVEN</span></h1>
+                <!-- The start game button wich closes the rules section if open, closes the menu and renders the game section visible -->
                 <button id="start-button"><span class="odd">START </span><span class="even">GAME!</span></button>
             </div>
+
+            <!-- The game section where all the badly modified images on paint and game buttons are displayed -->
             <div id="game-section">
-                <span id="quit-button-container"><button id="quit-button">Quit</button></span>
-                <span id="role-button-container"><button id="role-guesser-button">Guesser!</button><button
-                        id="role-hider-button">Hider!</button></span>
+
+                <!-- Container for the quit button created to more easily manipulate the position of the quit button -->
+                <span id="quit-button-container">
+                    <!-- The dreaded quit button that quits the game section, resets everything and goes back to the menu -->
+                    <button id="quit-button">Quit</button>
+                </span>
+                <!-- Container for the role buttons -->
+                <span id="role-button-container">
+                    <!-- The hopefully useful role buttons that open the rules of the 2 roles: guesser and hider -->
+                    <button id="role-guesser-button">Guesser!</button>
+                    <button id="role-hider-button">Hider!</button>
+                </span>
+                <!-- The guesser rules section visible only when the guesser button is clicked -->
                 <div id="role-guesser-section">
                     <h2>You are the <span class="odd">Guesser!</span></h2>
                     <p>This is how the Guesser's turn works:</p>
@@ -64,9 +83,11 @@
                     </ul>
                     <p>By pressing the QUIT button you close the game and reset the score.</p>
                     <p>By pressing the CLOSE button you close this window.</p>
+                    <!-- Button that closes the guesser rules section when clicked -->
                     <button id="role-guesser-close">CLOSE</button>
                 </div>
 
+                <!-- The hider rules section visible only when the guesser button is clicked -->
                 <div id="role-hider-section">
                     <h2>You are the <span class="even">Hider!</span></h2>
                     <p>This is how the Hider's turn works:</p>
@@ -82,41 +103,59 @@
                     </ul>
                     <p>By pressing the QUIT button you close the game and reset the score.</p>
                     <p>By pressing the CLOSE button you close this window.</p>
+                    <!-- Button that closes the hider rules section when clicked -->
                     <button id="role-hider-close">CLOSE</button>
                 </div>
 
+                <!-- Container for the speech bubble images used to inform the player visually about the OE decisions -->
                 <div id="bubble-image-section"></div>
-                <div id="image-section">
-                </div>
+                <!-- Container for the hand images used as a visual representation of what is happening -->
+                <div id="image-section"></div>
+                <!-- Container for the pouch images and score keeping -->
                 <div id="score-section">
                     <span>
+                        <!-- A pouch with marbles image -->
                         <img class="pouch" src="assets/images/marble-pouch.webp"
                             alt="A pouch with marbles used to keep score">
                     </span>
+                    <!-- Used to keep player score inside the pouch image -->
                     <p id="player-marble"></p>
+                    <!-- Used to keep computer score inside the pouch image -->
                     <p id="computer-marble"></p>
                     <span>
+                        <!-- A pouch with marbles image -->
                         <img class="pouch" src="assets/images/marble-pouch.webp"
                             alt="A pouch with marbles used to keep score">
                     </span>
                 </div>
+
+                <!-- Container used to inform the player through text about what is happening -->
                 <div id="information-section">
+                    <!-- This is used to tell the player about its current role or information about the game flow-->
                     <p id="player-status"></p>
+
+                    <!-- Container for the OE section -->
                     <div id="odd-even-container">
                         <p>Choose Odd or Even:</p>
+                        <!-- Container for the OE buttons -->
                         <span id="odd-even-button-container">
+                            <!-- OE buttons -->
                             <button id="odd-button">Odd</button>
                             <button id="even-button">Even</button>
                         </span>
                     </div>
 
+                    <!-- Container for the hider section -->
                     <div id="hider-container">
                         <p>Choose how many Marbles you want to hide:</p>
+                        <!-- Container for the hider buttons, the buttons will be dynamically created based on the player's available marbles -->
                         <span id="hider-button-container"></span>
                     </div>
 
+                    <!-- Container for the wager section -->
                     <div id="wager-container">
                         <p>How much do you wager?</p>
+                        <!-- Container for the wager buttons, the buttons will be dynamically created based on the player's available marbles -->
                         <span id="wager-button-container"></span>
                     </div>
                 </div>
