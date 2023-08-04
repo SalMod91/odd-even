@@ -287,17 +287,18 @@ body {
     position: relative;
     border: 5px solid black;
     width: 100%;
-    height: 25%;
-    top: 1%;
+    height: 190px;
+    top: 10px;
     background-color: rgba(246, 215, 176, .85);
 }
 
 /* Active role */
 #player-status {
     position: relative;
-    bottom: 20px;
+    bottom: 30px;
     font-size: 150%;
     text-align: center;
+    line-height: 2;
 }
 
 /* Container for the OE section */
@@ -306,8 +307,9 @@ body {
     align-items: center;
     flex-direction: column;
     font-size: 150%;
-    position: relative;
-    bottom: 70px;
+    position: absolute;
+    bottom: 10px;
+    line-height: 0;
 }
 
 /* OE buttons container */
@@ -356,8 +358,9 @@ body {
     align-items: center;
     flex-direction: column;
     font-size: 150%;
-    position: relative;
-    bottom: 70px;
+    position: absolute;
+    bottom: 10px;
+    line-height: 0;
 }
 
 /* Container for the wager buttons */
@@ -388,8 +391,9 @@ body {
     align-items: center;
     flex-direction: column;
     font-size: 150%;
-    position: relative;
-    bottom: 60px;
+    position: absolute;
+    bottom: 10px;
+    line-height: 0;
 }
 
 /* Container for the hider buttons */
@@ -452,4 +456,10 @@ body {
 .hider-button:active {
     transform: translateY(5px);
     box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
+}
+
+/* Media queries */
+
+@media screen and (max-width: 1440px) {
+    
 }
