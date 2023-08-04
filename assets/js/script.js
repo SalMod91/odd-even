@@ -11,6 +11,7 @@ const wagerSection = document.getElementById("wager-container");
 const hiderSection = document.getElementById("hider-container");
 const wagerButtonContainer = document.getElementById("wager-button-container");
 const hiderButtonContainer = document.getElementById("hider-button-container");
+const nextTurnButtonContainer = document.getElementById("next-turn-container");
 
 // Set variables to various buttons
 const evenButton = document.getElementById("even-button");
@@ -23,6 +24,7 @@ const roleGuesserButton = document.getElementById("role-guesser-button");
 const roleHiderButton = document.getElementById("role-hider-button");
 const closeGuesserButton = document.getElementById("role-guesser-close");
 const closeHiderButton = document.getElementById("role-hider-close");
+const nextTurnButton = document.getElementById("next-turn-button");
 
 // Score
 let playerMarblesCounter = document.getElementById("player-marble");
@@ -40,7 +42,6 @@ let playerWager;
 let computerWager;
 let playerMarbles;
 let computerMarbles;
-let endTurnTimeOut;
 let endGameVictoryTimeOut;
 let endGameDefeatTimeOut;
 
@@ -137,6 +138,7 @@ roleGuesserButton.addEventListener("click", openGuesserRules);
 roleHiderButton.addEventListener("click", openHiderRules);
 closeGuesserButton.addEventListener("click", closeGuesserRules);
 closeHiderButton.addEventListener("click", closeHiderRules);
+nextTurnButton.addEventListener("click", nextTurn);
 
 // Event listener for OE buttons to call the handleOE function
 oddButton.addEventListener("click", function () {
@@ -491,7 +493,7 @@ function hiderWinMessage() {
     let computerWagerAmount = computerWager === 1 ? "1 marble" : `${computerWager} marbles`;
 
     // Updates the player status message informing the player of the computer's choice and that the player won
-    playerStatus.innerHTML = `<p><p>Computer thinks you hide an <span class="${computerOE}">${computerOE}</span> number of marbles and guessed wrong.</p> 
+    playerStatus.innerHTML = `<p><p>Computer thought you hid an <span class="${computerOE}">${computerOE}</span> number of marbles and guessed wrong.</p> 
     <p>Computer wagered and <span class="even">lost ${computerWagerAmount}</span>.</p>`;
 }
 
@@ -504,7 +506,7 @@ function hiderLossMessage() {
     let computerWagerAmount = computerWager === 1 ? "1 marble" : `${computerWager} marbles`;
 
     // Updates the player status message informing the player of the computer's choice and that the player lost
-     playerStatus.innerHTML = `<p>Computer thinks you hide an <span class="${computerOE}">${computerOE}</span> number of marbles and guessed correctly.</p> 
+     playerStatus.innerHTML = `<p>Computer thought you hid an <span class="${computerOE}">${computerOE}</span> number of marbles and guessed correctly.</p> 
     <p>Computer wagered and <span class="odd">won ${computerWagerAmount}</span>.</p>`;
 }
 
@@ -532,7 +534,7 @@ function switchTurn() {
 
 /**
  * Function that runs at the end of a turn.
- * Calculates if the game is over. If the game is not over it handles the switch of the player's turn and progresses the game.
+ * Calculates if the game is over. If the game is not over it renders the next turn button visible.
  */
 function turnEnd() {
 
@@ -547,31 +549,39 @@ function turnEnd() {
         endGameDefeatTimeOut = setTimeout(defeat, 3000);
     } else {
         // Set a timeout for switch of the turn
-        endTurnTimeOut = setTimeout(function () {
-            // Switches the player's turn
-            switchTurn();
-
-            // Checks if it is the player's turn to be the guesser
-            if (playerTurn) {
-                // Clears the bubble speech image and displays the player status message indicating that the player is the guesser
-                clearBubble();
-                playerGuesser();
-
-                // Displays the guesser rule section button and the OE buttons
-                showGuesserButton();
-                showOE();
-
-            } else {
-                // Clears the bubble speech image and displays the player status message indicating that the player is the hider
-                clearBubble();
-                playerHider();
-
-                // Displays the hider rule section button and the hider buttons
-                showHiderButton();
-                showHider();
-            }
-        }, 3000);
+        showNextTurnButton();
     }
+}
+
+/**
+ * Renders the next turn button visible at the end of a turn. When pressed it progresses the game by switching the turn of the player.
+ * @param {Event} event - The event that triggered the function, in this case a click event.
+ */
+function nextTurn(event) {
+                // Switches the player's turn
+                switchTurn();
+
+                // Checks if it is the player's turn to be the guesser
+                if (playerTurn) {
+                    // Clears the bubble speech image and displays the player status message indicating that the player is the guesser
+                    hideNextTurnButton();
+                    clearBubble();
+                    playerGuesser();
+    
+                    // Displays the guesser rule section button and the OE buttons
+                    showGuesserButton();
+                    showOE();
+    
+                } else {
+                    // Clears the bubble speech image and displays the player status message indicating that the player is the hider
+                    hideNextTurnButton();
+                    clearBubble();
+                    playerHider();
+    
+                    // Displays the hider rule section button and the hider buttons
+                    showHiderButton();
+                    showHider();
+                }
 }
 
 /**
@@ -581,7 +591,6 @@ function turnEnd() {
  */
 function quitGame(event) {
 
-    clearTimeout(endTurnTimeOut);
     clearTimeout(endGameVictoryTimeOut);
     clearTimeout(endGameDefeatTimeOut);
 
@@ -595,6 +604,7 @@ function quitGame(event) {
     closeGuesserRules();
     closeHiderRules();
     hideHider();
+    hideNextTurnButton();
     menu.style.display = "flex";
 
 }
@@ -608,7 +618,7 @@ function victory() {
     playerStatus.innerHTML = `<p>You <span class='even'>won</span>!</p>`;
 
     // After 2 seconds quits the game
-    setTimeout(function () {
+    endGameVictoryTimeOut = setTimeout(function () {
         quitGame();
     }, 2000);
 }
@@ -622,7 +632,7 @@ function defeat() {
     playerStatus.innerHTML = `<p>You <span class='odd'>lost</span>!</p>`;
 
     // After 2 seconds quits the game
-    setTimeout(function () {
+    endGameDefeatTimeOut = setTimeout(function () {
         quitGame();
     }, 2000);
 }
@@ -778,8 +788,22 @@ function compareOE() {
     // Updates the displayed score
     scoreUpdate();
 
-    // Ends the game if the player's marble score is 20/0 or switches turn and progresses the game
+    // Ends the game if the player's marble score is 20/0 or renders the next turn button visible.
     turnEnd();
+}
+
+/**
+ * Renders the next turn button visible
+ */
+function showNextTurnButton() {
+    nextTurnButtonContainer.style.display = "flex";
+}
+
+/**
+ * Hides the next turn button
+ */
+function hideNextTurnButton() {
+    nextTurnButtonContainer.style.display = "none";
 }
 
 // Hider Player turn
@@ -916,6 +940,6 @@ function compareHider() {
     // Updates the displayed score
     scoreUpdate();
 
-    // Ends the game if the player's marble score is 20/0 or switches turn and progresses the game
+    // Ends the game if the player's marble score is 20/0 or renders the next turn button visible.
     turnEnd();
 }

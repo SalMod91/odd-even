@@ -298,7 +298,7 @@ body {
     bottom: 30px;
     font-size: 150%;
     text-align: center;
-    line-height: 2;
+    line-height: 1.5;
 }
 
 /* Container for the OE section */
@@ -403,6 +403,38 @@ body {
     align-items: center;
 }
 
+/* Container for the next turn section */
+#next-turn-container {
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    font-size: 150%;
+    position: absolute;
+    bottom: 10px;
+    line-height: 0;
+}
+
+/* Container for the next turn button */
+#next-turn-button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Next turn button */
+#next-turn-button {
+    margin: 5px;
+    width: 160px;
+    height: 50px;
+    font-size: 100%;
+    border: 2px solid black;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 0px 7px 0px 0px rgba(100, 100, 111, 0.6);
+}
+
 /* Hider buttons */
 .hider-button {
     margin: 5px;
@@ -440,7 +472,8 @@ body {
 #odd-button:hover,
 #even-button:hover,
 .wager-button:hover,
-.hider-button:hover {
+.hider-button:hover,
+#next-turn-button:hover {
     background-color: #f2f2f2;
 }
 
@@ -453,7 +486,8 @@ body {
 #odd-button:active,
 #even-button:active,
 .wager-button:active,
-.hider-button:active {
+.hider-button:active,
+#next-turn-button:active {
     transform: translateY(5px);
     box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
 }
@@ -461,5 +495,5 @@ body {
 /* Media queries */
 
 @media screen and (max-width: 1440px) {
-    
+
 }
