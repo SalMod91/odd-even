@@ -400,7 +400,6 @@ function startGame(event) {
     // Closes the menu and opens the game section
     menu.style.display = "none";
     gameSection.style.display = "flex";
-    gameContainer.style.minHeight = "98vh";
 
     // Sets the player and computer score to 10
     playerMarbles = 10;
@@ -626,7 +625,6 @@ function quitGame(event) {
     showFooter();
     gitHubIcon.classList.remove("clicked");
     menu.style.display = "flex";
-    gameContainer.style.minHeight = "92vh";
 }
 
 /**

@@ -11,13 +11,12 @@
 
 /* Background taken from Squid Game */
 body {
-    background: url(../images/background.jpg);
+    background: url(../images/background.jpg) no-repeat;
 }
 
 /* Contains every element inside */
 #game-container {
-    max-width: 60%;
-    min-height: 92vh;
+    width: 1142px;
     display: flex;
     justify-content: center;
     margin: 0 auto;
@@ -33,6 +32,7 @@ body {
     width: 100%;
     border: 5px solid black;
     background-color: #eccca2;
+    height: 750px;
 }
 
 /* Rules Section of the main menu */
@@ -98,6 +98,8 @@ body {
     border: 5px solid black;
     background-color: rgba(236, 204, 162, .9);
     position: relative;
+    height: 890px;
+
 }
 
 /* Container for the role buttons */
@@ -229,7 +231,7 @@ body {
     display: flex;
     width: 100%;
     position: relative;
-    top: 0.5%;
+    bottom: 130px;
     justify-content: space-between;
 }
 
@@ -251,8 +253,8 @@ body {
 /* Section containing the pouch images and score text */
 #score-section {
     display: flex;
-    position: relative;
-    top: 19%;
+    position: absolute;
+    bottom: 190px;
     width: 100%;
     justify-content: space-between;
 }
@@ -491,44 +493,214 @@ body {
     box-shadow: 0px 2px 0px 0px rgba(100, 100, 111, 0.6)
 }
 
+/* Footer section */
 #footer {
     display: flex;
     justify-content: space-between;
     font-size: 140%;
     background-color: #eccca2;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    position: relative;
     color: black;
-    width: 59%;
+    width: 1132px;
     border: 5px solid black;
-    margin: 0 auto;
-    height: 5%;
+    margin: 10px auto -10px;
+    height: 60px;
     align-items: center;
     font-family: sans-serif;
 }
 
 #footer p {
     padding: 0 10px;
+    font-weight: bold;
 }
 
+/* Github icon */
 #footer i {
     padding: 0 10px;
     font-size: 170%;
     color: black;
 }
 
+/* Used in js to change "permanently" the color, this way the github icon will have both indetifying colors of the theme odd and even */
 #footer i.clicked {
     color: #f44786;
 }
 
+/* Hover function for github icon, this way the github icon will have both identifying colors of the theme odd and even */
 #footer i:hover {
     color: #037a76;
 }
 
 /* Media queries */
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 360px) {
+    #game-container {
+        width: 304px;
+    }
 
+    #menu {
+        border: 2px solid black;
+        height: 400px;
+    }
+
+    #rules-section {
+        padding: 5px;
+        border: 2px solid black;
+        font-size: 60%;
+    }
+
+    #rules-close, #rules-open, #start-button {
+        width: 140px;
+        font-size: 100%;
+        height: 40px;
+        border: 2px solid black;
+    }
+
+    #rules-close {
+        margin-bottom: 5px;
+    }
+
+    #game-title {
+        font-size: 200%;
+        left: 0;
+    }
+
+    #footer {
+        font-size: 70%;
+        width: 300px;
+        border: 2px solid black;
+        margin: 5px auto 0;
+        height: 40px;
+    }
+
+    #game-section {
+        width: 100%;
+        border: 2px solid black;
+        height: 450px;
+    }
+
+    #quit-button {
+        width: 70px;
+        height: 40px;
+        font-size: 100%;
+        border: 2px solid black;
+    }
+
+    #role-hider-button {
+        width: 80px;
+        height: 40px;
+        font-size: 100%;
+        border: 2px solid black;
+    }
+
+    #role-guesser-button {
+        width: 110px;
+        height: 40px;
+        font-size: 100%;
+        color: #f44786;
+        border: 2px solid black;
+    }
+
+    #role-hider-close, #role-guesser-close {
+        width: 72px;
+        height: 40px;
+        font-size: 120%;
+        border: 2px solid black;
+        margin-bottom: 5px;
+    }
+
+    #role-hider-section, #role-guesser-section {
+        padding: 5px;
+        border: 2px solid black;
+        font-size: 60%;
+    }
+
+    #bubble-image-section {
+        top: 10.5%;
+    }
+
+    .bubble {
+        width: 100px;
+        height: 100px;
+    }
+
+    #image-section {
+        bottom: 67px;
+    }
+
+    .left {
+        width: 140px;
+    }
+
+    .right {
+        width: 140px;
+        transform: scaleX(-1);
+    }
+
+    #score-section {
+        bottom: 125px;
+        width: 90%;
+    }
+
+    .pouch {
+        width: 75px;
+    }
+
+    #player-marble {
+        left: 25px;
+        bottom: 15px;
+        font-size: 105%;
+    }
+
+    #computer-marble {
+        right: 39px;
+        bottom: 15px;
+        font-size: 105%;
+    }
+
+    #information-section {
+        border: 2px solid black;
+        height: 120px;
+        top: 10px;
+    }
+
+    #player-status {
+        bottom: 10px;
+        font-size: 75%;
+        line-height: normal;
+    }
+
+    #odd-even-container {
+        font-size: 75%;
+        bottom: 10px;
+        line-height: 0;
+    }
+
+    #even-button, #odd-button {
+        width: 60px;
+        height: 30px;
+    }
+
+    #hider-container, #wager-container {
+        font-size: 75%;
+        bottom: 10px;
+        line-height: 0;
+    }
+
+    .hider-button, .wager-button {
+        width: 40px;
+        height: 30px;
+        font-size: 100%;
+        border: 2px solid black;
+    }
+
+    #next-turn-container {
+        font-size: 75%;
+    }
+
+    #next-turn-button {
+        width: 110px;
+        height: 30px;
+        border: 2px solid black;
+    }
 }
