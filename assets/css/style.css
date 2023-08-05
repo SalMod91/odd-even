@@ -533,14 +533,297 @@ body {
 
 /* Media queries */
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 1440px) {
+    #menu {
+        height: 585px;
+    }
+
+    #game-section {
+        height: 730px;
+    }
+
+    #bubble-image-section {
+        top: 8.5%;
+    }
+
+    .bubble {
+        width: 180px;
+        height: 180px;
+    }
+
+    #score-section {
+        width: 96%;
+    }
+}
+
+/* Folowing a research most 1280px width and lower screens have an average minimum height of 700px, henceforth the game has a height of maximum 700px */
+@media screen and (max-width: 1280px) {
+    
     #game-container {
-        width: 304px;
+        margin: auto;
+        width: 800px;
     }
 
     #menu {
+        height: 475px;
+        border: 4px solid black;
+    }
+
+    #rules-section {
+        font-size: 90%;
+        border: 4px solid black;
+    }
+
+    #game-section {
+        height: 630px;
+        border: 4px solid black;
+    }
+
+    #footer {
+        margin: auto;
+        margin-top: 5px;
+        width: 792px;
+        border: 4px solid black;
+    }
+
+    #quit-button {
+        width: 100px;
+        height: 50px;
+        font-size: 170%;
+    }
+
+    #role-guesser-button {
+        width: 170px;
+        height: 50px;
+        font-size: 170%;
+    }
+
+    #role-hider-button {
+        width: 135px;
+        height: 50px;
+        font-size: 170%;
+    }
+
+    #role-hider-section, #role-guesser-section {
+        font-size: 90%;
+        border: 4px solid black;
+    }
+
+    #role-hider-close, #role-guesser-close {
+        width: 125px;
+        height: 50px;
+        font-size: 180%;
+    }
+
+    #odd-even-container, #wager-container, #hider-container {
+        font-size: 130%;
+    }
+
+    #even-button, #odd-button {
+        width: 70px;
+        height: 40px
+    }
+
+    .hider-button, .wager-button {
+        width: 70px;
+        height: 40px;
+    }
+
+    #bubble-image-section {
+        top: 9.5%;
+    }
+
+    .bubble {
+        width: 120px;
+        height: 120px;
+    }
+
+    #image-section {
+        bottom: 90px;
+    }
+
+    .left, .right {
+        width: 200px;
+    }
+
+    #score-section {
+        bottom: 172px;
+        width: 93%;
+    }
+
+    #player-marble {
+        left: 31px;
+        bottom: 10%;
+        font-size: 170%;
+    }
+
+    #computer-marble {
+        right: 50px;
+        bottom: 10%;
+        font-size: 170%;
+    }
+
+    .pouch {
+        width: 100px;
+    }
+
+    #information-section {
+        border: 3px solid black;
+        height: 170px;
+    }
+
+    #player-status {
+        font-size: 130%;
+    }
+
+    #next-turn-container {
+        font-size: 125%;
+    }
+
+    #next-turn-button {
+        width: 135px;
+        height: 40px;
+    }
+}
+
+/* Media query 828px has been chosen over the usual 768px as apple iphone 11, a still common used phone has this width, removing the fixed width size and changing it to 100% width */
+@media screen and (max-width: 828px) {
+    #game-container {
+        width: 100%;
+    }
+
+    #footer {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    #menu {
+        border: 4px solid black;
+        height: 500px;
+    }
+
+    #rules-section {
+        font-size: 90%;
+        border: 4px solid black;
+    }
+
+    #rules-close, #rules-open, #start-button {
+        width: 240px;
+        height: 60px;
+        font-size: 180%;
+    }
+
+    #game-title {
+        font-size: 290%;
+        left: 0;
+    }
+
+    #game-section {
+        height: 570px;
+    }
+
+    #role-hider-button {
+        width: 135px;
+        height: 50px;
+        font-size: 180%;
+    }
+
+    #role-guesser-button {
+        width: 180px;
+        height: 50px;
+        font-size: 180%;
+    }
+
+    #role-hider-section, #role-guesser-section {
+        font-size: 90%;
+    }
+
+    #role-hider-close, #role-guesser-close {
+        width: 125px;
+        height: 50px;
+        font-size: 180%;
+    }
+
+    #quit-button {
+        width: 100px;
+        height: 50px;
+        font-size: 180%;
+    }
+
+    #bubble-image-section {
+        top: 8.5%;
+    }
+
+    .bubble {
+        width: 140px;
+        height: 140px;
+    }
+
+    #image-section {
+        bottom: 90px;
+    }
+
+    .left, .right {
+        width: 200px;
+    }
+
+    #score-section {
+        bottom: 172px;
+        width: 97%;
+    }
+
+    #player-marble {
+        left: 38px;
+        bottom: 12%;
+    }
+
+    #computer-marble {
+        right: 60px;
+        bottom: 12%;
+    }
+
+    .pouch {
+        width: 120px;
+    }
+
+    #information-section {
+        height: 170px;
+    }
+
+    #player-status {
+        font-size: 120%;
+    }
+
+    #hider-container, #wager-container, #odd-even-container {
+        font-size: 125%;
+    }
+
+    .hider-button, .wager-button {
+        width: 70px;
+        height: 40px;
+    }
+
+    #even-button, #odd-button {
+        width: 70px;
+        height: 40px
+    }
+
+    #next-turn-container {
+        font-size: 125%;
+    }
+
+    #next-turn-button {
+        width: 135px;
+        height: 40px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #menu {
         border: 2px solid black;
-        height: 400px;
+        height: 480px;
     }
 
     #rules-section {
@@ -549,15 +832,16 @@ body {
         font-size: 60%;
     }
 
-    #rules-close, #rules-open, #start-button {
-        width: 140px;
-        font-size: 100%;
-        height: 40px;
-        border: 2px solid black;
+    #rules-open, #start-button {
+        width: 170px;
+        font-size: 125%;
     }
 
     #rules-close {
         margin-bottom: 5px;
+        width: 120px;
+        font-size: 200%;
+        height: 40px;
     }
 
     #game-title {
@@ -567,16 +851,14 @@ body {
 
     #footer {
         font-size: 70%;
-        width: 300px;
         border: 2px solid black;
-        margin: 5px auto 0;
         height: 40px;
     }
 
     #game-section {
         width: 100%;
         border: 2px solid black;
-        height: 450px;
+        height: 520px;
     }
 
     #quit-button {
@@ -702,5 +984,22 @@ body {
         width: 110px;
         height: 30px;
         border: 2px solid black;
+    }
+
+}
+
+@media screen and (max-width: 360px) {
+    #menu {
+        border: 2px solid black;
+        height: 400px;
+    }
+
+    /* Mozilla fix */
+    #game-title {
+        font-size: 199%;
+    }
+
+    #game-section {
+        height: 450px;
     }
 }

@@ -1,5 +1,4 @@
 // Creating the sections wich visibility will be interchangable 
-const gameContainer = document.getElementById("game-container");
 const menu = document.getElementById("menu");
 const rulesSection = document.getElementById("rules-section");
 const gameSection = document.getElementById("game-section");
