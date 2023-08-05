@@ -12,6 +12,7 @@
 /* Background taken from Squid Game */
 body {
     background: url(../images/background.jpg) no-repeat;
+    background-size: auto;
 }
 
 /* Contains every element inside */
@@ -533,6 +534,23 @@ body {
 
 /* Media queries */
 
+/* Background */
+/* Squidgame background gets swapped with a sand background as it is not tall enough for such screens */
+@media screen and (min-height: 1200px) {
+    body {
+        background: url(../images/sand.jpg) no-repeat;
+        background-size: cover;
+    }
+}
+
+/* Squidgame background gets swapped with a sand background as it is not wide enough for such screen resolutions*/
+@media screen and (min-width: 1921px) {
+    body {
+        background: url(../images/sand.jpg) no-repeat;
+        background-size: cover;
+    }
+}
+
 @media screen and (max-width: 1440px) {
     #menu {
         height: 585px;
@@ -558,7 +576,6 @@ body {
 
 /* Folowing a research most 1280px width and lower screens have an average minimum height of 700px, henceforth the game has a height of maximum 700px */
 @media screen and (max-width: 1280px) {
-    
     #game-container {
         margin: auto;
         width: 800px;
@@ -686,7 +703,7 @@ body {
     }
 }
 
-/* Media query 828px has been chosen over the usual 768px as apple iphone 11, a still common used phone has this width, removing the fixed width size and changing it to 100% width */
+/* Media query 828px has been chosen over the usual 768px as apple iphone 11, a still commonly used phone */
 @media screen and (max-width: 828px) {
     #game-container {
         width: 100%;
@@ -716,8 +733,11 @@ body {
     }
 
     #game-title {
-        font-size: 290%;
-        left: 0;
+        font-size: 300%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        left: auto;
     }
 
     #game-section {
@@ -775,13 +795,13 @@ body {
     }
 
     #player-marble {
-        left: 38px;
-        bottom: 12%;
+        left: 40px;
+        bottom: 17%;
     }
 
     #computer-marble {
-        right: 60px;
-        bottom: 12%;
+        right: 62px;
+        bottom: 17%;
     }
 
     .pouch {
@@ -823,7 +843,7 @@ body {
 @media screen and (max-width: 480px) {
     #menu {
         border: 2px solid black;
-        height: 480px;
+        height: 520px;
     }
 
     #rules-section {
@@ -844,11 +864,6 @@ body {
         height: 40px;
     }
 
-    #game-title {
-        font-size: 200%;
-        left: 0;
-    }
-
     #footer {
         font-size: 70%;
         border: 2px solid black;
@@ -858,7 +873,7 @@ body {
     #game-section {
         width: 100%;
         border: 2px solid black;
-        height: 520px;
+        height: 560px;
     }
 
     #quit-button {
@@ -988,7 +1003,99 @@ body {
 
 }
 
-@media screen and (max-width: 360px) {
+/* For tall modern phones that easily reach 800px viewport height */
+@media screen and (max-width: 480px) and (min-height: 641px) {
+    #menu {
+        border: 2px solid black;
+        height: 670px;
+    }
+
+    #rules-section {
+        font-size: 80%;
+    }
+
+    #game-section {
+        width: 100%;
+        border: 2px solid black;
+        height: 710px;
+    }
+
+    #quit-button {
+        width: 100px;
+        height: 50px;
+        font-size: 180%;
+    }
+
+    #role-guesser-button {
+        width: 180px;
+        height: 50px;
+        font-size: 180%;
+    }
+
+    #role-hider-button {
+        width: 135px;
+        height: 50px;
+        font-size: 180%;
+    }
+
+    #role-hider-section, #role-guesser-section {
+        font-size: 80%;
+    }
+
+    #role-hider-close, #role-guesser-close {
+        width: 125px;
+        height: 50px;
+        font-size: 180%;
+    }
+
+    .bubble {
+        width: 140px;
+        height: 140px;
+    }
+
+    .left, .right {
+        width: 165px;
+    }
+
+    #score-section {
+        bottom: 172px;
+    }
+
+    .pouch {
+        width: 120px;
+    }
+
+    #player-marble {
+        left: 40px;
+        bottom: 17%;
+        font-size: 170%;
+    }
+
+    #computer-marble {
+        right: 62px;
+        bottom: 17%;
+        font-size: 170%;
+    }
+
+    #information-section {
+        height: 170px;
+    }
+
+    #player-status {
+        font-size: 100%;
+    }
+
+    #hider-container, #wager-container {
+        font-size: 100%;
+    }
+
+    #odd-even-container {
+        font-size: 100%;
+    }
+}
+
+/* As there are no listed devices with a viewport width lower than 360px with a height viewport higher tìhan 641px i didn't bother to create a media query overruling the previous media query*/
+@media screen and (max-width: 359px) {
     #menu {
         border: 2px solid black;
         height: 400px;
