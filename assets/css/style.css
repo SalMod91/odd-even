@@ -1094,7 +1094,7 @@ body {
     }
 }
 
-/* As there are no listed devices with a viewport width lower than 360px with a height viewport higher tìhan 641px i didn't bother to create a media query overruling the previous media query*/
+/* As there are no listed devices with a viewport width lower than 360px with a height viewport higher than 641px i didn't bother to create a media query overruling the previous media query*/
 @media screen and (max-width: 359px) {
     #menu {
         border: 2px solid black;

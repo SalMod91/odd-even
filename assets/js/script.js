@@ -143,7 +143,7 @@ closeHiderButton.addEventListener("click", closeHiderRules);
 nextTurnButton.addEventListener("click", nextTurn);
 
 // Turns the github icon to the odd color when clicked
-gitHubIcon.addEventListener("click", function() {
+gitHubIcon.addEventListener("click", function () {
     gitHubIcon.classList.add("clicked");
 });
 
@@ -284,11 +284,11 @@ function displayPlayerImage(value) {
         case 2:
             index = 6;
             break;
-        
+
         case 3:
             index = 8;
             break;
-        
+
         case 4:
             index = 10;
             break;
@@ -316,11 +316,11 @@ function displayComputerHiderImage(randomNumber) {
         case 2:
             index = 7;
             break;
-        
+
         case 3:
             index = 9;
             break;
-        
+
         case 4:
             index = 11;
             break;
@@ -348,11 +348,11 @@ function displayComputerWagerImage(computerWager) {
         case 2:
             index = 7;
             break;
-        
+
         case 3:
             index = 9;
             break;
-        
+
         case 4:
             index = 11;
             break;
@@ -369,7 +369,7 @@ function displayComputerWagerImage(computerWager) {
 /**
  * Clears the screen from the displayed hand images
  */
-function clearImage () {
+function clearImage() {
     imageSection.innerHTML = "";
 }
 
@@ -395,7 +395,7 @@ function startGame(event) {
     // Closes the rules section and hides the footer
     closeRules();
     hideFooter();
-    
+
     // Closes the menu and opens the game section
     menu.style.display = "none";
     gameSection.style.display = "flex";
@@ -514,7 +514,7 @@ function hiderLossMessage() {
     let computerWagerAmount = computerWager === 1 ? "1 marble" : `${computerWager} marbles`;
 
     // Updates the player status message informing the player of the computer's choice and that the player lost
-     playerStatus.innerHTML = `<p>Computer thought you hid an <span class="${computerOE}">${computerOE}</span> number of marbles and guessed correctly.</p> 
+    playerStatus.innerHTML = `<p>Computer thought you hid an <span class="${computerOE}">${computerOE}</span> number of marbles and guessed correctly.</p> 
     <p>Computer wagered and <span class="odd">won ${computerWagerAmount}</span>.</p>`;
 }
 
@@ -526,7 +526,7 @@ function scoreUpdate() {
     // Limit playerMarbles and computerMarbles to a range of 0 to 20
     playerMarbles = Math.min(Math.max(playerMarbles, 0), 20);
     computerMarbles = Math.min(Math.max(computerMarbles, 0), 20);
-    
+
     // Update the displayed player and computer marble score
     playerMarblesCounter.textContent = playerMarbles;
     computerMarblesCounter.textContent = computerMarbles;
@@ -550,7 +550,7 @@ function turnEnd() {
     if (playerMarbles >= 20) {
         // Set a timeout to call the victory() function after 3 seconds
         endGameVictoryTimeOut = setTimeout(victory, 3000);
-    } 
+    }
     // If the player's marble counter 0 or lower the player loses
     else if (playerMarbles <= 0) {
         // Set a timeout to call the defeat() function after 3 seconds
@@ -566,30 +566,30 @@ function turnEnd() {
  * @param {Event} event - The event that triggered the function, in this case a click event.
  */
 function nextTurn(event) {
-                // Switches the player's turn
-                switchTurn();
+    // Switches the player's turn
+    switchTurn();
 
-                // Checks if it is the player's turn to be the guesser
-                if (playerTurn) {
-                    // Clears the bubble speech image and displays the player status message indicating that the player is the guesser
-                    hideNextTurnButton();
-                    clearBubble();
-                    playerGuesser();
-    
-                    // Displays the guesser rule section button and the OE buttons
-                    showGuesserButton();
-                    showOE();
-    
-                } else {
-                    // Clears the bubble speech image and displays the player status message indicating that the player is the hider
-                    hideNextTurnButton();
-                    clearBubble();
-                    playerHider();
-    
-                    // Displays the hider rule section button and the hider buttons
-                    showHiderButton();
-                    showHider();
-                }
+    // Checks if it is the player's turn to be the guesser
+    if (playerTurn) {
+        // Clears the bubble speech image and displays the player status message indicating that the player is the guesser
+        hideNextTurnButton();
+        clearBubble();
+        playerGuesser();
+
+        // Displays the guesser rule section button and the OE buttons
+        showGuesserButton();
+        showOE();
+
+    } else {
+        // Clears the bubble speech image and displays the player status message indicating that the player is the hider
+        hideNextTurnButton();
+        clearBubble();
+        playerHider();
+
+        // Displays the hider rule section button and the hider buttons
+        showHiderButton();
+        showHider();
+    }
 }
 
 /**
@@ -665,7 +665,7 @@ function showFooter() {
  * Hides the footer
  */
 function hideFooter() {
-    footer.style.display ="none";
+    footer.style.display = "none";
 }
 
 // List of functions necessary for the game flow in order of appearance
@@ -712,6 +712,13 @@ function hideOE() {
 }
 
 /**
+ * Gives the wager button a value to be used as an argument for the function to progress the game
+ */
+function addWagerValue () {
+    let selectedWager = parseInt(this.value);
+            handleWager(selectedWager);
+}
+/**
  * Displays the wager buttons by changing the display style of the wager section to "flex".
  * Clears the existing wager buttons and dynamically recreates the buttons based on the available player marbles.
  * Each wager button is created with an event listener for game progression.
@@ -732,10 +739,7 @@ function showWager() {
         wagerButton.textContent = wager;
 
         // Adds a click event listener to each button for game progression
-        wagerButton.addEventListener("click", function () {
-            let selectedWager = parseInt(this.value);
-            handleWager(selectedWager);
-        });
+        wagerButton.addEventListener("click", addWagerValue);
 
         // Appends the wager buttons as a child to the container
         wagerButtonContainer.appendChild(wagerButton);
@@ -840,9 +844,16 @@ function hideNextTurnButton() {
 // Hider Player turn
 
 /**
+ * Uses the hider buttons value as an argument for the function to progress the game
+ */
+function addHiderValue () {
+    let selectedHide = parseInt(this.value);
+    handleHider(selectedHide);
+}
+
+/**
  * Displays the hider buttons by changing the display style of the hider section to "flex".
  * Clears the existing hider buttons and dynamically recreates the buttons based on the available player marbles.
- * Each hider button is created with an event listener for game progression.
  * Clears the exisiting hand images and displays new hand images depicting the player hiding and the computer guessing.
  */
 function showHider() {
@@ -870,10 +881,7 @@ function showHider() {
         hideButton.value = hide;
 
         // Adds a click event listener to each button for game progression
-        hideButton.addEventListener("click", function () {
-            let selectedHide = parseInt(this.value);
-            handleHider(selectedHide);
-        });
+        hideButton.addEventListener("click", addHiderValue);
 
         // Appends the hider buttons as a child to the container
         hiderButtonContainer.appendChild(hideButton);
