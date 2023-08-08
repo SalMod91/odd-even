@@ -574,7 +574,6 @@ body {
     }
 }
 
-/* Folowing a research most 1280px width and lower screens have an average minimum height of 700px, henceforth the game has a height of maximum 700px */
 @media screen and (max-width: 1280px) {
     #game-container {
         margin: auto;
@@ -582,7 +581,7 @@ body {
     }
 
     #menu {
-        height: 475px;
+        height: 80vh;
         border: 4px solid black;
     }
 
@@ -592,7 +591,7 @@ body {
     }
 
     #game-section {
-        height: 630px;
+        height: 95vh;
         border: 4px solid black;
     }
 
@@ -621,27 +620,33 @@ body {
         font-size: 170%;
     }
 
-    #role-hider-section, #role-guesser-section {
+    #role-hider-section,
+    #role-guesser-section {
         font-size: 90%;
         border: 4px solid black;
     }
 
-    #role-hider-close, #role-guesser-close {
+    #role-hider-close,
+    #role-guesser-close {
         width: 125px;
         height: 50px;
         font-size: 180%;
     }
 
-    #odd-even-container, #wager-container, #hider-container {
+    #odd-even-container,
+    #wager-container,
+    #hider-container {
         font-size: 130%;
     }
 
-    #even-button, #odd-button {
+    #even-button,
+    #odd-button {
         width: 70px;
         height: 40px
     }
 
-    .hider-button, .wager-button {
+    .hider-button,
+    .wager-button {
         width: 70px;
         height: 40px;
     }
@@ -659,7 +664,8 @@ body {
         bottom: 90px;
     }
 
-    .left, .right {
+    .left,
+    .right {
         width: 200px;
     }
 
@@ -703,7 +709,142 @@ body {
     }
 }
 
-/* Media query 828px has been chosen over the usual 768px as apple iphone 11, a still commonly used phone */
+@media screen and (max-width: 1280px) and (min-height: 1200px) {
+    #game-container {
+        margin: auto;
+        width: 100%;
+    }
+
+    #menu {
+        height: 80vh;
+        border: 4px solid black;
+    }
+
+    #rules-section {
+        font-size: 120%;
+        border: 4px solid black;
+    }
+
+    #game-section {
+        height: 95vh;
+        border: 4px solid black;
+    }
+
+    #footer {
+        margin: auto;
+        margin-top: 5px;
+        width: auto;
+        border: 4px solid black;
+    }
+
+    #quit-button {
+        width: 120px;
+        height: 60px;
+        font-size: 200%;
+    }
+
+    #role-guesser-button {
+        width: 200px;
+        height: 60px;
+        font-size: 200%;
+    }
+
+    #role-hider-button {
+        width: 170px;
+        height: 60px;
+        font-size: 200%;
+    }
+
+    #role-hider-section,
+    #role-guesser-section {
+        font-size: 120%;
+        border: 4px solid black;
+    }
+
+    #role-hider-close,
+    #role-guesser-close {
+        width: 260px;
+        height: 60px;
+        font-size: 200%;
+    }
+
+    #odd-even-container,
+    #wager-container,
+    #hider-container {
+        font-size: 150%;
+    }
+
+    #even-button,
+    #odd-button {
+        width: 90px;
+        height: 50px;
+    }
+
+    .hider-button,
+    .wager-button {
+        width: 90px;
+        height: 50px;
+    }
+
+    #bubble-image-section {
+        top: 7.5%;
+    }
+
+    .bubble {
+        width: 200px;
+        height: 200px;
+    }
+
+    #image-section {
+        bottom: 130px;
+    }
+
+    .left,
+    .right {
+        width: 350px;
+    }
+
+    #score-section {
+        bottom: 190px;
+        width: 100%;
+    }
+
+    #player-marble {
+        left: 47px;
+        bottom: 18%;
+        font-size: 200%;
+    }
+
+    #computer-marble {
+        right: 78px;
+        bottom: 18%;
+        font-size: 200%;
+    }
+
+    .pouch {
+        width: 150px;
+    }
+
+    #information-section {
+        border: 3px solid black;
+        height: 190px;
+    }
+
+    #player-status {
+        font-size: 150%;
+    }
+
+    #next-turn-container {
+        font-size: 150%;
+    }
+
+    #next-turn-button {
+        width: 160px;
+        height: 50px;
+    }
+}
+
+/* Media query 828px has been chosen over the usual 768px as apple iphone 11 is a still commonly used phone */
 @media screen and (max-width: 828px) {
     #game-container {
         width: 100%;
@@ -726,7 +867,9 @@ body {
         border: 4px solid black;
     }
 
-    #rules-close, #rules-open, #start-button {
+    #rules-close,
+    #rules-open,
+    #start-button {
         width: 240px;
         height: 60px;
         font-size: 180%;
@@ -756,11 +899,13 @@ body {
         font-size: 180%;
     }
 
-    #role-hider-section, #role-guesser-section {
+    #role-hider-section,
+    #role-guesser-section {
         font-size: 90%;
     }
 
-    #role-hider-close, #role-guesser-close {
+    #role-hider-close,
+    #role-guesser-close {
         width: 125px;
         height: 50px;
         font-size: 180%;
@@ -785,7 +930,8 @@ body {
         bottom: 90px;
     }
 
-    .left, .right {
+    .left,
+    .right {
         width: 200px;
     }
 
@@ -816,16 +962,20 @@ body {
         font-size: 120%;
     }
 
-    #hider-container, #wager-container, #odd-even-container {
+    #hider-container,
+    #wager-container,
+    #odd-even-container {
         font-size: 125%;
     }
 
-    .hider-button, .wager-button {
+    .hider-button,
+    .wager-button {
         width: 70px;
         height: 40px;
     }
 
-    #even-button, #odd-button {
+    #even-button,
+    #odd-button {
         width: 70px;
         height: 40px
     }
@@ -852,7 +1002,8 @@ body {
         font-size: 60%;
     }
 
-    #rules-open, #start-button {
+    #rules-open,
+    #start-button {
         width: 170px;
         font-size: 125%;
     }
@@ -898,7 +1049,8 @@ body {
         border: 2px solid black;
     }
 
-    #role-hider-close, #role-guesser-close {
+    #role-hider-close,
+    #role-guesser-close {
         width: 72px;
         height: 40px;
         font-size: 120%;
@@ -906,7 +1058,8 @@ body {
         margin-bottom: 5px;
     }
 
-    #role-hider-section, #role-guesser-section {
+    #role-hider-section,
+    #role-guesser-section {
         padding: 5px;
         border: 2px solid black;
         font-size: 60%;
@@ -973,18 +1126,21 @@ body {
         line-height: 0;
     }
 
-    #even-button, #odd-button {
+    #even-button,
+    #odd-button {
         width: 60px;
         height: 30px;
     }
 
-    #hider-container, #wager-container {
+    #hider-container,
+    #wager-container {
         font-size: 75%;
         bottom: 10px;
         line-height: 0;
     }
 
-    .hider-button, .wager-button {
+    .hider-button,
+    .wager-button {
         width: 40px;
         height: 30px;
         font-size: 100%;
@@ -1038,11 +1194,13 @@ body {
         font-size: 180%;
     }
 
-    #role-hider-section, #role-guesser-section {
+    #role-hider-section,
+    #role-guesser-section {
         font-size: 80%;
     }
 
-    #role-hider-close, #role-guesser-close {
+    #role-hider-close,
+    #role-guesser-close {
         width: 125px;
         height: 50px;
         font-size: 180%;
@@ -1053,7 +1211,8 @@ body {
         height: 140px;
     }
 
-    .left, .right {
+    .left,
+    .right {
         width: 165px;
     }
 
@@ -1085,7 +1244,8 @@ body {
         font-size: 100%;
     }
 
-    #hider-container, #wager-container {
+    #hider-container,
+    #wager-container {
         font-size: 100%;
     }
 
