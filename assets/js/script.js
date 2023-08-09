@@ -1,3 +1,7 @@
+// Waits for the DOM to be finished loading
+document.addEventListener ("DOMContentLoaded", function() {
+});
+
 // Creating the sections wich visibility will be interchangable 
 const menu = document.getElementById("menu");
 const rulesSection = document.getElementById("rules-section");

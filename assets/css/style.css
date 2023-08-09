@@ -697,7 +697,7 @@ body {
     }
 
     #player-status {
-        font-size: 130%;
+        font-size: 129%;
     }
 
     #next-turn-container {
@@ -860,6 +860,7 @@ body {
     body {
         background-size: auto;
     }
+
     #menu {
         border: 4px solid black;
         height: 80vh;
@@ -1243,6 +1244,7 @@ body {
 
     #information-section {
         height: 170px;
+        padding: 5px;
     }
 
     #player-status {

@@ -237,3 +237,14 @@ Once pressed it reveals its true color, the Odd colour, the colour of danger! (c
 ## Testing 
 
 ### Testing Table:
+
+
+**TEST** | **ACTION** | **EXPECTATION** | **RESULT** 
+----------|----------|----------|----------
+Menu Section | Size down from 1920px to 320px max-width using Dev Tools on Chrome, Firefox and Edge. On safari it was not possible to test it because of a lack of devices | Elements look good down to 320px | Works as expected
+Menu Section | Rules section sizes down from 1920px to 320px max-width using Dev Tools on Chrome, Firefox and Edge. On safari it was not possible to test it because of a lack of devices | Elements look good down to 320px | Works as expected
+Menu Section | All buttons in the menu section | Each button responds and executes its functions, hover and active rules apply | Works as expected
+Game Section | Size down from 1920px to 320px max-width using Dev Tools on Chrome, Firefox and Edge. On safari it was not possible to test it because of a lack of devices | Elements look good down to 320px | Works as expected
+Game Section | Role rules section sizes down from 1920px to 320px max-width using Dev Tools on Chrome, Firefox and Edge. On safari it was not possible to test it because of a lack of devices. | Elements look good down to 320px | Works as expected
+Game Section | All buttons in the game section | Each button responds and executes its functions, hover and active rules apply | Works as expected
+
