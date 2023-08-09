@@ -13,6 +13,7 @@
 body {
     background: url(../images/background.jpg) no-repeat;
     background-size: auto;
+    font-family: sans-serif;
 }
 
 /* Contains every element inside */
@@ -268,7 +269,7 @@ body {
 /* Player score */
 #player-marble {
     position: absolute;
-    left: 47px;
+    left: 48px;
     bottom: 18%;
     font-size: 200%;
 }
@@ -675,15 +676,15 @@ body {
     }
 
     #player-marble {
-        left: 31px;
-        bottom: 10%;
-        font-size: 170%;
+        left: 30px;
+        bottom: 12%;
+        font-size: 160%;
     }
 
     #computer-marble {
-        right: 50px;
-        bottom: 10%;
-        font-size: 170%;
+        right: 49px;
+        bottom: 12%;
+        font-size: 160%;
     }
 
     .pouch {
